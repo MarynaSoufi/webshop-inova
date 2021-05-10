@@ -1,2 +1,3 @@
 Test repo!
-Test Git Flow!
+Test Git Flow Feature !
+Test Git Flow Release !
