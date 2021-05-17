@@ -35,13 +35,13 @@ export default class ProductsDb {
   
   async getPromo(id) {
     try {
-      let category = (await knexWebShop('Categories').where("category_id", parseInt(id)))[0];
+      let promo = (await knexWebShop('Promo').where("promo_id", parseInt(id)))[0];
       const products = await knexWebShop('Products')
-        .innerJoin("Categories", "Products.category_id", "Categories.category_id")
-        .where("Products.category_id", id)
+        .innerJoin("Promo", "Products.promo_id", "Promo.promo_id")
+        .where("Promo.promo_id", id)
         .select("Products.*");
-      category.products = products;
-      return category;
+      promo.products = products;
+      return promo;
     } catch(e) {
      console.error(e.message);
     }

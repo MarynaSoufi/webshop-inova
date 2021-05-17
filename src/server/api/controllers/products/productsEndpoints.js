@@ -12,12 +12,8 @@ export default (app) => {
   //get one product by index
   app.get('/products/:id', async (req, res) => await productsController.getOneProduct(productData,req, res));
 
-  // add a todo
-  app.post('/products', async (req, res) => await addTodo(todoData, req, res));
+  app.get('/promo/:id/products', async (req, res) => await productsController.getPromoProducts(productData, req, res));
 
-  // update a todo
-  app.put('/products/:id', async (req, res) => await updateTodo(todoData, req, res));
-
-  // delete a todo
-  app.delete('/products/:id', async (req, res) => await deleteTodo(todoData, req, res));
+ 
+  
 }
