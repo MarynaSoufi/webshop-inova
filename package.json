@@ -4,33 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/server/index.js --watch src/*",
-    "sass": "sass --style=compressed src/client/assets/_sass/main.scss src/client/assets/css/main.css",
-    "watch:sass": "npm run sass -- --watch",
-    "start": "npm-run-all sass --parallel watch:*"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pgmgent-pgm-4/webshop-inova.git"
   },
-  "type": "module",
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/pgmgent-pgm-4/webshop-inova/issues"
   },
-  "homepage": "https://github.com/pgmgent-pgm-4/webshop-inova#readme",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "dotenv": "^9.0.2",
-    "express": "^4.17.1",
-    "knex": "^0.95.5",
-    "node-sass": "^6.0.0",
-    "npm-run-all": "^4.1.5",
-    "sqlite3": "^5.0.2"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.7"
-  }
+  "homepage": "https://github.com/pgmgent-pgm-4/webshop-inova#readme"
 }
