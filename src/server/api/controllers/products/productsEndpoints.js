@@ -12,12 +12,7 @@ export default (app) => {
   //get one product by index
   app.get('/products/:id', async (req, res) => await productsController.getOneProduct(productData,req, res));
 
-  // add a todo
-  app.post('/products', async (req, res) => await addTodo(todoData, req, res));
-
-  // update a todo
-  app.put('/products/:id', async (req, res) => await updateTodo(todoData, req, res));
-
-  // delete a todo
-  app.delete('/products/:id', async (req, res) => await deleteTodo(todoData, req, res));
+  //search products
+  app.get('/search', async (req, res) => await productsController.searchProducts(productData,req, res));
+  
 }
