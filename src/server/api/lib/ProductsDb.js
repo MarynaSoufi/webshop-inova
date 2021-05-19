@@ -17,8 +17,18 @@ export default class ProductsDb {
 
   async getProduct(id) {
     try {
-      return await knexWebShop('Products')
-        .where('product_id', parseInt(id) )
+      const product =  (await knexWebShop('Products')
+      .where('Products.product_id', parseInt(id))
+      .select('Products.*'))[0];
+
+      const tags = await knexWebShop('Products')
+      .innerJoin("ProductsHasTags", "Products.product_id", "ProductsHasTags.product_id")
+      .innerJoin("Tags", "ProductsHasTags.tag_id", "Tags.tag_id")
+      .where('Products.product_id', parseInt(id))
+      .select("Tags.*");
+
+      product.tags = tags;
+      return product;
     } catch (e) {
       return console.error(e.message);
     }
@@ -32,21 +42,27 @@ export default class ProductsDb {
     }
   }
 
-  
-  async getPromo(id) {
+  async search(query) {
     try {
-      let promo = (await knexWebShop('Promo').where("promo_id", parseInt(id)))[0];
-      const products = await knexWebShop('Products')
-        .innerJoin("Promo", "Products.promo_id", "Promo.promo_id")
-        .where("Promo.promo_id", id)
-        .select("Products.*");
-      promo.products = products;
-      return promo;
-    } catch(e) {
-     console.error(e.message);
+      const products = await knexWebShop('Products')      
+      .innerJoin("Categories", "Products.category_id", "Categories.category_id")
+      .innerJoin("ProductsHasTags", "Products.product_id", "ProductsHasTags.product_id")
+      .innerJoin("Tags", "ProductsHasTags.tag_id", "Tags.tag_id")
+      .where("Products.category_id", query.categoryId)
+      .whereIn("ProductsHasTags.tag_id",query.tagIds)
+      .groupBy("Products.product_id")
+      .select("Products.*");
+
+      return products;
+    } catch (e) {
+      return console.error(e.message);
     }
   }
+
+
+
+  }
+  
   
 
 
-}

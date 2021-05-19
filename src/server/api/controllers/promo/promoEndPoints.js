@@ -6,7 +6,7 @@ export default (app) => {
   // const todoData = new TodoFile(process.env.TODOS_FILEPATH);
   const promoData = new PromoDb();
 
-  // get the todos
+  // get the promo
   app.get('/promo', async (req, res) => await promoController.getPromo(promoData,req, res));
 
 }

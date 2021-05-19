@@ -12,8 +12,7 @@ export default (app) => {
   //get one product by index
   app.get('/products/:id', async (req, res) => await productsController.getOneProduct(productData,req, res));
 
-  app.get('/promo/:id/products', async (req, res) => await productsController.getPromoProducts(productData, req, res));
-
- 
+  //search products
+  app.get('/search', async (req, res) => await productsController.searchProducts(productData,req, res));
   
 }

@@ -5,6 +5,7 @@ import cors from 'cors';
 import registerProductsEndpoints from './api/controllers/products/productsEndpoints.js';
 import registerCategoriesEndpoints from './api/controllers/categories/categoriesEndpoints.js';
 import registerPromoEndpoints from './api/controllers/promo/promoEndpoints.js';
+import registerTagsEndpoints from './api/controllers/tags/tagsEndpoints.js';
 
 //init dotenv 
 dotenv.config();
@@ -21,6 +22,7 @@ app.use(cors());
 registerProductsEndpoints(app);
 registerCategoriesEndpoints(app);
 registerPromoEndpoints(app);
+registerTagsEndpoints(app);
 
 
 //open the application
