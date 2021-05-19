@@ -13,5 +13,8 @@ export default (app) => {
 
   //get one product by index
   app.get('/categories/:id/products', async (req, res) => await categoriesController.getCategoryProducts(categoryData, req, res));
+  app.get('/categories/:categoryId/products/:tagId', async (req, res) => await categoriesController.getCategoryProductsTags(categoryData, req, res));
+  app.get('/categories/:categoryId/products/promo/:promoId', async (req, res) => await categoriesController.getPromoProducts(categoryData, req, res));
+
 
 } 

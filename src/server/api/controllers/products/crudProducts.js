@@ -1,5 +1,4 @@
 
-import parseProduct from './parseProduct.js';
 /**
  * get all songs without authenticate
  * @param {*} req 
@@ -35,13 +34,15 @@ export const addProduct = async (product, request, response) => {
   }
 };
 
-export const getPromoProducts = async(promo, request, response) => {
-  const id = request.params.id;
-  const promoDb = await promo.getPromo(id);
-  if(!promoDb){
-    response.status(404).json({error:`you do not have a promo with id ${id}`});
-    return;
+export const searchProducts = async (product, request, response) => {
+  try {
+    const searchQuery = {
+      categoryId: request.query.categoryId,
+      tagIds: Array.isArray(request.query.tagId) ? request.query.tagId : [request.query.tagId]
+    }    
+    response.status(200).json({ products: await product.search(searchQuery) });
+  } catch({ message }) {
+    response.status(500);
+    response.json({ error: message });
   }
-  response.status(200).json(promoDb);
-}
-
+};
