@@ -13,6 +13,15 @@
   }
 };
 
+export const getProductsWithPromo = async (product, request, response) => {
+  try {
+    response.status(200).json({ products: await product.getAllProductsWithPromo() });
+  } catch({ message }) {
+    response.status(500);
+    response.json({ error: message });
+  }
+};
+
 export const getOneProduct = async (product, request, response) => {
   try {
     const id = request.params.id;

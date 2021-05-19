@@ -8,6 +8,7 @@ export default (app) => {
 
   // get the todos
   app.get('/products', async (req, res) => await productsController.getProducts(productData,req, res));
+  app.get('/products/promo', async (req, res) => await productsController.getProductsWithPromo(productData,req, res));
 
   //get one product by index
   app.get('/products/:id', async (req, res) => await productsController.getOneProduct(productData,req, res));
