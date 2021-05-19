@@ -6,6 +6,9 @@ import registerProductsEndpoints from './api/controllers/products/productsEndpoi
 import registerCategoriesEndpoints from './api/controllers/categories/categoriesEndpoints.js';
 import registerPromoEndpoints from './api/controllers/promo/promoEndpoints.js';
 import registerTagsEndpoints from './api/controllers/tags/tagsEndpoints.js';
+import registerUsersEndpoints from './api/controllers/users/usersEndpoints.js';
+import authenticate from './api/controllers/auth/index.js';
+import auth from './api/middleware/auth.js';
 
 //init dotenv 
 dotenv.config();
@@ -24,7 +27,9 @@ registerCategoriesEndpoints(app);
 registerPromoEndpoints(app);
 registerTagsEndpoints(app);
 
-
+//registerUsersEndpoints(app);
+app.use('/users' ,auth, registerUsersEndpoints);
+app.use('/auth', authenticate);
 //open the application
 app.listen(process.env.PORT, () => {
   console.log(`Server is listening to port ${process.env.PORT}`);
