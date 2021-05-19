@@ -4,6 +4,9 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import registerProductsEndpoints from './api/controllers/products/productsEndpoints.js';
 import registerCategoriesEndpoints from './api/controllers/categories/categoriesEndpoints.js';
+import registerUsersEndpoints from './api/controllers/users/usersEndpoints.js';
+import authenticate from './api/controllers/auth/index.js';
+import auth from './api/middleware/auth.js';
 
 //init dotenv 
 dotenv.config();
@@ -19,8 +22,9 @@ app.use(cors());
 // register the endpoints
 registerProductsEndpoints(app);
 registerCategoriesEndpoints(app);
-
-
+//registerUsersEndpoints(app);
+app.use('/users' ,auth, registerUsersEndpoints);
+app.use('/auth', authenticate);
 //open the application
 app.listen(process.env.PORT, () => {
   console.log(`Server is listening to port ${process.env.PORT}`);
