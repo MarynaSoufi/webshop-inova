@@ -37,18 +37,17 @@ export default class ProductsDb {
       .where('Products.product_id', parseInt(id))
       .select("Tags.*");
 
+      const reviews = await knexWebShop('Reviews')
+      .innerJoin("Products", "Reviews.product_id", "Products.product_id")
+      .where('Reviews.product_id', parseInt(id))
+      .select("Reviews.*");
+
+      product.reviews = reviews;
+
       product.tags = tags;
       return product;
     } catch (e) {
       return console.error(e.message);
-    }
-  }
-
-  async add(description) {
-    try {
-      return await knexWebShop('Products').insert({ description });
-    } catch(e) {
-      Logger.error(e.message);
     }
   }
 
@@ -68,8 +67,6 @@ export default class ProductsDb {
       return console.error(e.message);
     }
   }
-
-
 
   }
   

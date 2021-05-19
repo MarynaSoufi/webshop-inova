@@ -33,7 +33,7 @@ passport.use(
 );
 
 export default (req, res, next) => {
-  if ((req.method == 'POST' && req.baseUrl == '/users')||(req.method == 'GET' && req.baseUrl == '/products')) {
+  if ((req.method == 'POST' && req.baseUrl == '/users')||(req.method == 'GET' && req.baseUrl == '/products')||(req.method == 'GET' && req.baseUrl == '/categories')) {
     // we no need authentication on get requests
     next();
   } else {

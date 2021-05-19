@@ -43,6 +43,8 @@ export const addProduct = async (product, request, response) => {
   }
 };
 
+
+
 export const searchProducts = async (product, request, response) => {
   try {
     const searchQuery = {
