@@ -15,6 +15,16 @@ export default class ProductsDb {
     }
   }
 
+  async getAllProductsWithPromo() {
+    try {
+      const product =  await knexWebShop('Products')
+      .where("Products.promo_id", !null)
+       return product
+    } catch (message) {
+      console.error(message);
+    }
+  }
+
   async getProduct(id) {
     try {
       const product =  (await knexWebShop('Products')
