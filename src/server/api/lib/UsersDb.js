@@ -18,7 +18,7 @@ dotenv.config();
      try {
        const userAddedResult = await knexWebShop('Users').insert({ email: email, password: bcrypt.hashSync(password, 10)});
        await knexWebShop('Profiles').insert({ user_id: userAddedResult[0]});
-       await knexWebShop('Cart').insert({ user_id: userAddedResult[0]});
+       await knexWebShop('Cart').insert({ user_id: userAddedResult[0]}); 
        return userAddedResult;
      } catch (e) {
        return console.error(e.message);
