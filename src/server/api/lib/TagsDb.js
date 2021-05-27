@@ -1,10 +1,10 @@
 import knexWebShop from '../../db/knexWebShop.js'
 
 
-export default class TafsDb {
+export default class TagsDb {
  
 /**
- * Get all promos
+ * Get all tags
  * @returns 
  */
   async getAll() {

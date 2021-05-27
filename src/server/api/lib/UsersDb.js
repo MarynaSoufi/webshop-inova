@@ -9,7 +9,7 @@ dotenv.config();
 
  export default class UsersDb {
    /**
-    * Adds a todo to our database
+    * Adds a user to our database
     * @param {string} email
     * @param {string} password
     */
