@@ -15,10 +15,22 @@ export default class ProductsDb {
     }
   }
 
+  // async getAllProductsWithPromo() {
+  //   try {
+  //     const product =  await knexWebShop('Products')
+  //     .where("Products.promo_id", !null)
+  //      return product
+  //   } catch (message) {
+  //     console.error(message);
+  //   }
+  // }
+
   async getAllProductsWithPromo() {
     try {
-      const product =  await knexWebShop('Products')
+      const product =  (await knexWebShop('Products')
       .where("Products.promo_id", !null)
+      .innerJoin("Promo", "Promo.promo_id", "Products.promo_id")
+      .select('Products.*', 'Promo. *'));
        return product
     } catch (message) {
       console.error(message);
