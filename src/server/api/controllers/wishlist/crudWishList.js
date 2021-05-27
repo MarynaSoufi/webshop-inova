@@ -5,7 +5,7 @@
  * @param {*} request 
  * @param {*} response 
  */
- export const addProduct = async (product, request, response) => {
+export const addProduct = async (product, request, response) => {
   try {
     const id_user = request.userId;
     const wishList = await product.getList(id_user);
@@ -20,7 +20,6 @@
     }else {
       response.status(400).json({ error: `WishList with id ${wishList.list_id} alredy has a product with id ${id}` });
     }
-    
   } catch({ message }) {
     response.status(500).json({ error: message });
   }
@@ -35,7 +34,6 @@
   try {
     const id_user = req.userId;
     const wishList = await list.getList(id_user);
-    const id = req.params.productId;
     if (!wishList) throw new Error("wishList not found");
     res.status(200).json(wishList);
   } catch (message) {
