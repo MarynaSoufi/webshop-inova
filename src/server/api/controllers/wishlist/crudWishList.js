@@ -18,7 +18,7 @@ export const addProduct = async (product, request, response) => {
       const newProduct = await product.addProduct(id, wishList.list_id);
       response.status(201).json({ product: newProduct });
     }else {
-      response.status(400).json({ error: `WishList with id ${wishList.list_id} alredy has a product with id ${id}` });
+      response.status(400).json({ error: `Cant do it because WishList with id ${wishList.list_id} alredy has a product with id ${id}` });
     }
   } catch({ message }) {
     response.status(500).json({ error: message });
