@@ -7,7 +7,7 @@ import registerCategoriesEndpoints from './api/controllers/categories/categories
 import registerPromoEndpoints from './api/controllers/promo/promoEndpoints.js';
 import registerTagsEndpoints from './api/controllers/tags/tagsEndpoints.js';
 import registerUsersEndpoints from './api/controllers/users/usersEndpoints.js';
-import registerReviewsEndpoints from './api/controllers/reviews/reviewsEndpoints.js';
+import registerReviewsEndpoints from './api/controllers/reviews/reviewsEndpoints.js'
 import registerWishListEndpoints from './api/controllers/wishlist/wishListEndpoints.js';
 import authenticate from './api/controllers/auth/index.js';
 import auth from './api/middleware/auth.js';

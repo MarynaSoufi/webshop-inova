@@ -19,6 +19,7 @@ dotenv.config();
        const userAddedResult = await knexWebShop('Users').insert({ email: email, password: bcrypt.hashSync(password, 10)});
        await knexWebShop('Profiles').insert({ user_id: userAddedResult[0]});
        await knexWebShop('Cart').insert({ user_id: userAddedResult[0]});
+       await knexWebShop('WishList').insert({ user_id: userAddedResult[0]});
        return userAddedResult;
      } catch (e) {
        return console.error(e.message);
@@ -66,6 +67,7 @@ dotenv.config();
        const userDeleted = await knexWebShop('Users').where('user_id', parseInt(id)).del();
        await knexWebShop('Profiles').where('user_id', parseInt(id)).del();
        await knexWebShop('Cart').where('user_id', parseInt(id)).del();
+       await knexWebShop('WishList').where('user_id', parseInt(id)).del();
        return userDeleted;
      } catch (e) {
        return console.error(e.message);
