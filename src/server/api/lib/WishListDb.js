@@ -10,6 +10,8 @@ export default class WishListDb {
       return console.error(e.message);
     }
   }
+
+
   async getList(id) {
     try {
         const list = (await knexWebShop('WishList')
@@ -25,6 +27,7 @@ export default class WishListDb {
       return console.error(e.message);
     }
   }
+
    /**
    * delete product from the list
    * @param {*} product_id 
@@ -40,6 +43,10 @@ export default class WishListDb {
           console.error(e.message);
       }
     }
+  
+
+  
+
   }
   
   
