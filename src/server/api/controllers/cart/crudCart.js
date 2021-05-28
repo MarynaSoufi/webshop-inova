@@ -64,8 +64,15 @@ export const updateCartMin = async (product, request, response) => {
       const id = request.params.productId;
       const getCart = await product.getOwnCart(id_user);
       const quantity = await product.getQuantity(getCart.cart_id, id);
-      const newCart = await product.update(id, getCart.cart_id, quantity.quantity -1);
-      response.status(200).json({ product: newCart });
+      if(quantity.quantity ===1) {
+        const deleteProduct = await product.delete(getCart.cart_id, id);
+        response.status(200).json({});
+      }else {
+        const newCart = await product.update(id, getCart.cart_id, quantity.quantity -1);
+        response.status(200).json({ product: newCart });
+      }
+      
+     
   } catch({ message }) {
       response.status(500).json({ error: message});
   }
