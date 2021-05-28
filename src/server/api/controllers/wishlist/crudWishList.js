@@ -14,7 +14,6 @@ export const addProduct = async (product, request, response) => {
      
      
     })
-    console.log(products);
     if(products.indexOf(+id) === -1) {
       const newProduct = await product.addProduct(id, wishList.list_id);
       response.status(201).json({ product: newProduct });

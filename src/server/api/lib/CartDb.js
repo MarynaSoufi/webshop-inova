@@ -6,36 +6,63 @@
 
  export default class CartDb{
 
-  async getCart(id, userId) {
+  async getOwnCart(id) {
     try {
-      return await knexSpotify('Cart').where("user_id",userId).where("id", parseInt(id) );
+        const cart = (await knexWebShop('Cart')
+        .where('user_id', parseInt(id))
+        .select('Cart .*'))[0];
+        const products = await knexWebShop('Products')
+        .innerJoin("CartHasProducts", "CartHasProducts.product_id", "Products.product_id")
+        .innerJoin("Cart", "Cart.cart_id", "CartHasProducts.cart_id")
+        // .where('WishListHasProducts.list_id', 'WishList.list_id', 'WishListHasProducts.list_id')
+        .select("Products .*")
+        cart.products = products;
+        return cart;
     } catch (e) {
       return console.error(e.message);
     }
   }
 
-  async getOwnCart(id) {
-    try{
-     return await knexWebShop('Cart').where('user_id', parseInt(id)).select('*');
-    }
-    catch (err) {
-     console.error(err.message);
-   }
-  }
-  async addProductToCart(id, productId, quantity) {
+  async getQuantity(id, product_id) {
     try {
-      
-      const productAddedToCartResult = await knexWebShop('CartHasProducts').insert({ cart_id:id, product_id: productId, quantity: quantity});
-      return productAddedToCartResult;
+        const cart = (await knexWebShop('CartHasProducts')
+        .where('cart_id', parseInt(id))
+        .where('product_id', parseInt(product_id))
+        .select('CartHasProducts .*'))[0];
+        return cart;
     } catch (e) {
       return console.error(e.message);
     }
   }
+
+  async addProductToCart( product_id, cart_id, quantity) {
+    try {
+      
+      return await knexWebShop('CartHasProducts').where( {cart_id: cart_id}).insert({ cart_id:cart_id, product_id: product_id, quantity: quantity});
+   
+    } catch (e) {
+      return console.error(e.message);
+    }
+  }
+
+  async update(product_id, cart_id, quantity) {
+    try {
+        return await knexWebShop('CartHasProducts').where("cart_id", cart_id).where("product_id", product_id).update({ quantity});
+    } catch(e) {
+      console.error(e.message);
+    }
+  }
+
+  async delete(cart_id, product_id) {
+    try {
+      return await knexWebShop('CartHasProducts').where({cart_id: cart_id}).where({product_id: product_id}).del();
+    } catch(e) {
+      console.error(e.message);
+    }
+  }
+
+  
+
+  
+
  }
-//  async updateProfile(id, firstName, lastName, mobileNumber, addressLine) {
-//   try {
-//     return await knexWebShop('Profiles').where('user_id', id).update({firstName: firstName, lastName:lastName, mobileNumber: mobileNumber, addressLine: addressLine});
-//   } catch (e) {
-//     console.error(e.message);
-//   }
-// }

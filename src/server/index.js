@@ -38,7 +38,6 @@ app.use('/users' ,auth, registerUsersEndpoints);
 app.use('/auth', authenticate);
 app.use('/reviews', auth, registerReviewsEndpoints);
 app.use('/wishlist', auth, registerWishListEndpoints);
-
 app.use('/cart', auth, registerCartEndpoints);
 
 //open the application
