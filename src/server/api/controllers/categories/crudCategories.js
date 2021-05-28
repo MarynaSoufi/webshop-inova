@@ -23,13 +23,14 @@
     try {
       const id = request.params.id;
       console.log(id);
-      response.status(200).json({ products: await category.getOneCategory(id) });
+      response.status(200).json({ category: await category.getOneCategory(id) });
     } catch({ message }) {
       response.status(500);
       response.json({ error: message });
     }
   };
 
+<<<<<<< HEAD
   /**
    * 
    * @param {*} category 
@@ -37,6 +38,18 @@
    * @param {*} response 
    * @returns 
    */
+=======
+  export const getCategoryAllProducts = async(category, request, response) => {
+    const id = request.params.id;
+    const categoryDb = await category.getCategoryAllProducts(id);
+    if(!categoryDb){
+      response.status(404).json({error:`you do not have a category with id ${id}`});
+      return;
+    }
+    response.status(200).json(categoryDb);
+  };
+
+>>>>>>> feature/cart_and_orders
   export const getCategoryProducts = async(category, request, response) => {
     const id = request.params.id;
     const categoryDb = await category.getCategory(id);
