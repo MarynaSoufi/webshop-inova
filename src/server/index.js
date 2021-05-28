@@ -7,8 +7,12 @@ import registerCategoriesEndpoints from './api/controllers/categories/categories
 import registerPromoEndpoints from './api/controllers/promo/promoEndpoints.js';
 import registerTagsEndpoints from './api/controllers/tags/tagsEndpoints.js';
 import registerUsersEndpoints from './api/controllers/users/usersEndpoints.js';
+
 import registerReviewsEndpoints from './api/controllers/reviews/reviewsEndpoints.js'
 import registerWishListEndpoints from './api/controllers/wishlist/wishListEndpoints.js';
+
+import registerCartEndpoints from './api/controllers/cart/cartEndpoints.js';
+
 import authenticate from './api/controllers/auth/index.js';
 import auth from './api/middleware/auth.js';
 
@@ -34,6 +38,9 @@ app.use('/users' ,auth, registerUsersEndpoints);
 app.use('/auth', authenticate);
 app.use('/reviews', auth, registerReviewsEndpoints);
 app.use('/wishlist', auth, registerWishListEndpoints);
+
+app.use('/cart', auth, registerCartEndpoints);
+
 //open the application
 app.listen(process.env.PORT, () => {
   console.log(`Server is listening to port ${process.env.PORT}`);

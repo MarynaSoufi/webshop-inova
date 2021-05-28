@@ -1,0 +1,61 @@
+body{
+  background-color: #000;
+  color: #fff;
+}
+.container{
+  width: 85%;
+  padding: 2rem;
+}
+
+.promo{
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  text-align: center;
+  font-size: 1.5rem;
+  color:#ff8c00;
+}
+.listHome{
+  &__items{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    
+    a{
+      width:24%;
+      margin-bottom: 4rem;
+      text-decoration: none;
+      color:#fff;
+      transition: all .5s ease-in-out;
+      img{
+        margin-bottom: .5rem;
+        border: 2px solid transparent;
+      }
+      .price{
+        display: flex;
+        justify-content: start;
+        align-items: baseline;
+        &__disc{
+          color:#ff8c00;
+          margin-left: .75rem;
+        }
+      }
+      &:hover{
+        transform: scale(1.008);
+        img{
+          border: 2px solid #ff8c00;
+        }
+        strong{
+          text-decoration: underline;
+        }
+        .price{
+          &__amount{
+            text-decoration: underline;
+          }
+        }
+        
+      }
+    }
+  }
+
+}
