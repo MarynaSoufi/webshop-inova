@@ -30,7 +30,7 @@ export default class ProductsDb {
       const product =  (await knexWebShop('Products')
       .where("Products.promo_id", !null)
       .innerJoin("Promo", "Promo.promo_id", "Products.promo_id")
-      .select('Products.*', 'Promo. *'));
+      .select('Products.*', 'Promo.percent'));
        return product
     } catch (message) {
       console.error(message);

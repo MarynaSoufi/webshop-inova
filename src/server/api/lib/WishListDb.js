@@ -19,7 +19,8 @@ export default class WishListDb {
         .select('WishList .*'))[0];
         const products = await knexWebShop('Products')
         .innerJoin("WishListHasProducts", "WishListHasProducts.product_id", "Products.product_id")
-        .innerJoin("WishList", "WishList.list_id", "Products.product_id")
+        .innerJoin("WishList", "WishList.list_id", "WishListHasProducts.list_id")
+        // .where('WishListHasProducts.list_id', 'WishList.list_id', 'WishListHasProducts.list_id')
         .select("Products .*")
         list.products = products;
         return list;

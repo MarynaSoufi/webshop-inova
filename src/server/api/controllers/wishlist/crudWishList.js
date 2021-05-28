@@ -12,7 +12,9 @@ export const addProduct = async (product, request, response) => {
     const products = wishList.products.map((p) => {
       return p.product_id;
      
+     
     })
+    console.log(products);
     if(products.indexOf(+id) === -1) {
       const newProduct = await product.addProduct(id, wishList.list_id);
       response.status(201).json({ product: newProduct });
