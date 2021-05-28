@@ -125,7 +125,7 @@ createProductDetail(result) {
         str=`
           <img src="./assets/images/${result.image}.jpg" alt="image ${result.name}" class = 'image image--detail'/>
           <div>${result.name}</div>
-          <p>${result.price}</p>
+          <p>€${result.price}</p>
           <p>${result.description}</p>
           <ul>${tagItem}</ul>
           <p>Reviews: ${reviews.length}</p>
