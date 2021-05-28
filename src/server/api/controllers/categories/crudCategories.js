@@ -30,7 +30,6 @@
     }
   };
 
-<<<<<<< HEAD
   /**
    * 
    * @param {*} category 
@@ -38,7 +37,7 @@
    * @param {*} response 
    * @returns 
    */
-=======
+
   export const getCategoryAllProducts = async(category, request, response) => {
     const id = request.params.id;
     const categoryDb = await category.getCategoryAllProducts(id);
@@ -49,7 +48,6 @@
     response.status(200).json(categoryDb);
   };
 
->>>>>>> feature/cart_and_orders
   export const getCategoryProducts = async(category, request, response) => {
     const id = request.params.id;
     const categoryDb = await category.getCategory(id);
@@ -60,15 +58,15 @@
     response.status(200).json(categoryDb);
   }
 
-  export const getCategoryAllProducts = async(category, request, response) => {
-    const id = request.params.id;
-    const categoryDb = await category.getCategoryAllProducts(id);
-    if(!categoryDb){
-      response.status(404).json({error:`you do not have a category with id ${id}`});
-      return;
-    }
-    response.status(200).json(categoryDb);
-  }
+  // export const getCategoryAllProducts = async(category, request, response) => {
+  //   const id = request.params.id;
+  //   const categoryDb = await category.getCategoryAllProducts(id);
+  //   if(!categoryDb){
+  //     response.status(404).json({error:`you do not have a category with id ${id}`});
+  //     return;
+  //   }
+  //   response.status(200).json(categoryDb);
+  // }
 
   export const getCategoryProductsTags = async(category, request, response) => {
     const category_id = request.params.categoryId;
