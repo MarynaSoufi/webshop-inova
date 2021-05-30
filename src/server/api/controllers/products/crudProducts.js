@@ -13,6 +13,15 @@
   }
 };
 
+export const getProducts2 = async (database, request, response) => {
+  try {
+    response.status(200).json({ products: await database.Product.findAll() });
+  } catch({ message }) {
+    response.status(500);
+    response.json({ error: message });
+  }
+};
+
 export const getProductsWithPromo = async (product, request, response) => {
   try {
     response.status(200).json({ products: await product.getAllProductsWithPromo() });
