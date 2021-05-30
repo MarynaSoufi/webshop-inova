@@ -88,3 +88,15 @@ export const deleteProduct = async (product,request, response) => {
       response.status(500).json({ error: message });
   }
 };
+
+export const deleteAllProducts = async (product,request, response) => {
+  try {
+      const id_user = request.userId;
+      const getCart = await product.getOwnCart(id_user);
+      const deleteProduct = await product.deleteAll(getCart.cart_id);
+      response.status(200).json({});
+  } catch({ message }) {
+      response.status(500).json({ error: message });
+  }
+};
+

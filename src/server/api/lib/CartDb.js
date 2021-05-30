@@ -61,6 +61,14 @@
     }
   }
 
+  async deleteAll(cart_id) {
+    try {
+      return await knexWebShop('CartHasProducts').where({cart_id: cart_id}).del();
+    } catch(e) {
+      console.error(e.message);
+    }
+  }
+
   
 
   
