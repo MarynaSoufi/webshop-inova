@@ -1,0 +1,52 @@
+.sign{
+  &__title{
+    margin: 4rem 0;
+    font-size: 1.5rem;
+  }
+  @media (max-width: 768px){
+    &__title{
+      font-size: 1rem;
+    }
+  }
+  &__wrapper{
+    display:flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+    &__form{
+      width:48%;
+      &__title{
+        margin-bottom: 2rem;
+        font-size: 1.25rem;
+        text-align: center;
+      }
+      form{
+        
+        padding: 2rem;
+        border: 1px solid #ff8c00;
+        label{
+          font-size: 1.25rem;
+        }
+        input{
+          margin-top: 1rem;
+          margin-bottom: 2rem;
+          width: 100%;
+          height:68px;
+          padding: .5rem;
+          color: #fff;
+          background-color:transparent;
+          outline: none;
+          border: 1px solid #ff8c00;
+        }
+      }
+      @media(max-width: 768px){
+        width: 100%;
+        .log-form{ 
+          margin-bottom: 4rem;
+        }
+      }
+    }
+    
+  }
+}
