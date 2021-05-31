@@ -2,31 +2,28 @@ import sqlz from 'sequelize';
 const { Model, DataTypes } = sqlz;
 
 export default (sequelize) => {
-	class Category extends Model {
+	class Profile extends Model {
 		static associate(models) {
-			this.hasMany(models.Product, { foreignKey: 'category_id'});
 			//this.belongsTo(models.Category);
 			// this.belongsToMany(models.Tag, { through: 'ProductTag' });
 		}
 	}
-	
-	Category.init({
-		category_id: {
+	Profile.init({
+		user_id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
     	primaryKey: true,
 			allowNull: false
 		},
-		name: DataTypes.STRING,
-		created_at: DataTypes.DATE,
-		updated_at: DataTypes.DATE
+		firstName: DataTypes.STRING,
+    LastName: DataTypes.STRING,
+    mobileNumber: DataTypes.STRING,
+    addressLine: DataTypes.STRING,
 	}, {
 		sequelize,
-		modelName: 'Category',
-		tableName: 'Categories',
-		updatedAt: 'updated_at',
-  	createdAt: 'created_at'
+		modelName: 'Profile',
+		tableName: 'Profiles',
 	});
 	
-	return Category;
+	return Profile;
 }

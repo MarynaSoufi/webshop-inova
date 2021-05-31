@@ -10,6 +10,7 @@ export default (app) => {
 
   // get the todos
   app.get('/products', async (req, res) => await productsController.getProducts2(sequelize, req, res));
+  app.get('/category/:categoryId/products', async (req, res) => await productsController.getProductByCategoryId(sequelize, req, res));
   app.get('/products/promo', async (req, res) => await productsController.getProductsWithPromo(productData,req, res));
 
   //get one product by index

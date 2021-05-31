@@ -4,7 +4,7 @@ import knexWebShop from '../../db/knexWebShop.js'
 export default class CategoriesDb {
  
 /**
- * Get all products
+ * Get all categories
  * @returns 
  */
   async getAll() {
@@ -14,7 +14,11 @@ export default class CategoriesDb {
       console.error(message);
     }
   }
-
+/**
+ * get one category by id
+ * @param {} id 
+ * @returns 
+ */
   async getOneCategory(id) {
     try {
       return await knexWebShop('Categories')
@@ -23,7 +27,11 @@ export default class CategoriesDb {
       return console.error(e.message);
     }
   }
-
+/**
+ * get all product dy category id
+ * @param {*} id 
+ * @returns 
+ */
   async getCategory(id) {
     try {
       let category = (await knexWebShop('Categories').where("category_id", parseInt(id)))[0];

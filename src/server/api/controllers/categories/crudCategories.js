@@ -90,3 +90,30 @@
     response.status(200).json(categoryDb );
   }
   
+  export const getAllCategories = async (database, request, response) => {
+    try {
+      response.status(200).json({ categories: await database.Category.findAll() });
+    } catch({ message }) {
+      response.status(500);
+      response.json({ error: message });
+    }
+  };
+
+  export const getCategoryById = async (database, req, res) => {
+    try {
+      // Get categoryId parameter
+      const { categoryId } = req.params;
+      // Get specific category from database
+      const category = await database.Category.findOne({ where: { category_id: categoryId}, include: [database.Product]});
+  
+      if (category === null) {
+        throw new Error(`Could not found the category with id ${categoryId}!`, 404);
+      }
+      // Send response
+      res.status(200).json(category);
+    } catch ({message}) {
+      res.status(404);
+      res.json({ error: message });
+
+    }
+  };

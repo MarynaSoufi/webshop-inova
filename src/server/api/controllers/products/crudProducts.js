@@ -13,15 +13,6 @@
   }
 };
 
-export const getProducts2 = async (database, request, response) => {
-  try {
-    response.status(200).json({ products: await database.Product.findAll() });
-  } catch({ message }) {
-    response.status(500);
-    response.json({ error: message });
-  }
-};
-
 export const getProductsWithPromo = async (product, request, response) => {
   try {
     response.status(200).json({ products: await product.getAllProductsWithPromo() });
@@ -66,3 +57,31 @@ export const searchProducts = async (product, request, response) => {
     response.json({ error: message });
   }
 };
+
+export const getProducts2 = async (database, request, response) => {
+  try {
+    response.status(200).json({ products: await database.Product.findAll() });
+  } catch({ message }) {
+    response.status(500);
+    response.json({ error: message });
+  }
+};
+
+export const getProductByCategoryId = async (database, req, res) => {
+	try {
+		// Get productId parameter
+		const { categoryId } = req.params;
+		// Get specific product from database
+		const product = await database.Product.findAll({
+			where: {
+				category_id: categoryId,
+			},
+		});
+		// Send response
+		res.status(200).json(product);
+	} catch ({ message }) {
+    res.status(500);
+		res.json({ error: message });
+	}
+};
+

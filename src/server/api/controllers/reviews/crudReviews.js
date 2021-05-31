@@ -11,3 +11,12 @@ export const addRev = async (review, request, response) => {
     response.status(500).json({ error: message });
   }
 };
+
+export const getAllReviews = async (database, request, response) => {
+  try {
+    response.status(200).json({ reviews: await database.Review.findAll() });
+  } catch({ message }) {
+    response.status(500);
+    response.json({ error: message });
+  }
+};
