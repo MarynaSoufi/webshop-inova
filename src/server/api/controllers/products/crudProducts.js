@@ -1,6 +1,6 @@
 
 /**
- * get all songs without authenticate
+ * get all products without authenticate
  * @param {*} req 
  * @param {*} res 
  */
@@ -13,6 +13,12 @@
   }
 };
 
+/**
+ * get products with promo
+ * @param {*} product 
+ * @param {*} request 
+ * @param {*} response 
+ */
 export const getProductsWithPromo = async (product, request, response) => {
   try {
     response.status(200).json({ products: await product.getAllProductsWithPromo() });
@@ -21,7 +27,12 @@ export const getProductsWithPromo = async (product, request, response) => {
     response.json({ error: message });
   }
 };
-
+/**
+ * get one prodyct
+ * @param {*} product 
+ * @param {*} request 
+ * @param {*} response 
+ */
 export const getOneProduct = async (product, request, response) => {
   try {
     const id = request.params.id;
@@ -32,19 +43,12 @@ export const getOneProduct = async (product, request, response) => {
     response.json({ error: message });
   }
 };
-
-export const addProduct = async (product, request, response) => {
-  try {
-    const { description } = parseProduct (request, response);
-    const newProduct = await product.add(description);
-    response.status(201).json({ product: newProduct });
-  } catch({ message }) {
-    response.status(500).json({ error: message });
-  }
-};
-
-
-
+/**
+ * get products by categoryId and tagIds
+ * @param {*} product 
+ * @param {*} request 
+ * @param {*} response 
+ */
 export const searchProducts = async (product, request, response) => {
   try {
     const searchQuery = {
@@ -58,30 +62,4 @@ export const searchProducts = async (product, request, response) => {
   }
 };
 
-export const getProducts2 = async (database, request, response) => {
-  try {
-    response.status(200).json({ products: await database.Product.findAll() });
-  } catch({ message }) {
-    response.status(500);
-    response.json({ error: message });
-  }
-};
-
-export const getProductByCategoryId = async (database, req, res) => {
-	try {
-		// Get productId parameter
-		const { categoryId } = req.params;
-		// Get specific product from database
-		const product = await database.Product.findAll({
-			where: {
-				category_id: categoryId,
-			},
-		});
-		// Send response
-		res.status(200).json(product);
-	} catch ({ message }) {
-    res.status(500);
-		res.json({ error: message });
-	}
-};
 

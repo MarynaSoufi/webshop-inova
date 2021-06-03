@@ -1,5 +1,10 @@
-import parseReview from './parseReview.js';
 
+/**
+ * add trview
+ * @param {*} review 
+ * @param {*} request 
+ * @param {*} response 
+ */
 export const addRev = async (review, request, response) => {
   try {
     const { description } = request.body;
@@ -12,11 +17,3 @@ export const addRev = async (review, request, response) => {
   }
 };
 
-export const getAllReviews = async (database, request, response) => {
-  try {
-    response.status(200).json({ reviews: await database.Review.findAll() });
-  } catch({ message }) {
-    response.status(500);
-    response.json({ error: message });
-  }
-};

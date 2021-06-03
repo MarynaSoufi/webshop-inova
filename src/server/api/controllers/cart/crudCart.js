@@ -1,3 +1,9 @@
+/**
+ * get own cart
+ * @param {*} cart 
+ * @param {*} request 
+ * @param {*} response 
+ */
 export const getCart = async (cart, request, response) => {
   try {
   const id = request.userId;
@@ -8,7 +14,12 @@ export const getCart = async (cart, request, response) => {
     response.json({ error: message });
   }
 };
-
+/**
+ * get quantity products in the cart
+ * @param {*} cart 
+ * @param {*} request 
+ * @param {*} response 
+ */
 export const getQuantity = async (cart, request, response) => {
   try {
   const id = request.userId;
@@ -21,7 +32,12 @@ export const getQuantity = async (cart, request, response) => {
     response.json({ error: message });
   }
 };
-
+/**
+ * add product to cart
+ * @param {*} product 
+ * @param {*} request 
+ * @param {*} response 
+ */
 export const addProduct = async (product, request, response) => {
   try {
   const id_user = request.userId;
@@ -45,6 +61,12 @@ export const addProduct = async (product, request, response) => {
   }
 };
 
+/**
+ * update product quantity(+)
+ * @param {*} product 
+ * @param {*} request 
+ * @param {*} response 
+ */
 export const updateCart = async (product, request, response) => {
   try {
       const id_user = request.userId;
@@ -57,7 +79,12 @@ export const updateCart = async (product, request, response) => {
       response.status(500).json({ error: message});
   }
 };
-
+/**
+ * update product quantity(-)
+ * @param {*} product 
+ * @param {*} request 
+ * @param {*} response 
+ */
 export const updateCartMin = async (product, request, response) => {
   try {
       const id_user = request.userId;
@@ -77,6 +104,12 @@ export const updateCartMin = async (product, request, response) => {
       response.status(500).json({ error: message});
   }
 };
+/**
+ * delete product from cart
+ * @param {*} product 
+ * @param {*} request 
+ * @param {*} response 
+ */
 export const deleteProduct = async (product,request, response) => {
   try {
       const id_user = request.userId;
@@ -89,6 +122,12 @@ export const deleteProduct = async (product,request, response) => {
   }
 };
 
+/**
+ * get all products in the cart
+ * @param {*} product 
+ * @param {*} request 
+ * @param {*} response 
+ */
 export const deleteAllProducts = async (product,request, response) => {
   try {
       const id_user = request.userId;

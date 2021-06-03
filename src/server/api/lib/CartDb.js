@@ -6,6 +6,12 @@
 
  export default class CartDb{
 
+  /**
+   * get own cart
+   * @param {*} id 
+   * @returns 
+   */
+
   async getOwnCart(id) {
     try {
         const cart = (await knexWebShop('Cart')
@@ -22,6 +28,13 @@
     }
   }
 
+  /**
+   * get quantity products in the cart
+   * @param {*} id 
+   * @param {*} product_id 
+   * @returns 
+   */
+
   async getQuantity(id, product_id) {
     try {
         const cart = (await knexWebShop('CartHasProducts')
@@ -34,6 +47,13 @@
     }
   }
 
+  /**
+   * add product to cart
+   * @param {*} product_id 
+   * @param {*} cart_id 
+   * @param {*} quantity 
+   * @returns 
+   */
   async addProductToCart( product_id, cart_id, quantity) {
     try {
       
@@ -43,7 +63,13 @@
       return console.error(e.message);
     }
   }
-
+/**
+ * update quantity product
+ * @param {*} product_id 
+ * @param {*} cart_id 
+ * @param {*} quantity 
+ * @returns 
+ */
   async update(product_id, cart_id, quantity) {
     try {
         return await knexWebShop('CartHasProducts').where("cart_id", cart_id).where("product_id", product_id).update({ quantity});
@@ -51,7 +77,12 @@
       console.error(e.message);
     }
   }
-
+/**
+ * delete product from cart
+ * @param {*} cart_id 
+ * @param {*} product_id 
+ * @returns 
+ */
   async delete(cart_id, product_id) {
     try {
       return await knexWebShop('CartHasProducts').where({cart_id: cart_id}).where({product_id: product_id}).del();

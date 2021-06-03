@@ -20,7 +20,12 @@
      response.json({ error: message });
    }
  };
-
+/**
+ * get owm profile
+ * @param {*} user 
+ * @param {*} request 
+ * @param {*} response 
+ */
  export const getOwnProfile = async (user, request, response) => {
   try {
   const id = request.userId;
@@ -50,7 +55,12 @@
    }
  };
 
- 
+ /**
+  * delete user
+  * @param {*} user 
+  * @param {*} request 
+  * @param {*} response 
+  */
 
  export const deleteUser = async (user, request, response) => {
   try {
@@ -81,7 +91,12 @@
     response.status(500).json({ error: message });
   }
 };
-
+/**
+ * updste email
+ * @param {*} user 
+ * @param {*} request 
+ * @param {*} response 
+ */
 export const updateEmail = async (user, request, response) => {
   try {
    const { email } = request.body;
@@ -98,6 +113,12 @@ export const updateEmail = async (user, request, response) => {
     response.status(500).json({ error: message });
   }
 };
+/**
+ * update password
+ * @param {*} user 
+ * @param {*} request 
+ * @param {*} response 
+ */
 
 export const updatePassword = async (user, request, response) => {
   try {

@@ -22,7 +22,7 @@ export const placeOrder = async (database, request, response) => {
 };
 
 /**
- * get own wishLIst
+ * get order by order_id
  * @param {*} req 
  * @param {*} res 
  */
@@ -38,6 +38,12 @@ export const placeOrder = async (database, request, response) => {
   }
 };
 
+/**
+ * update order(staus sent)
+ * @param {*} order 
+ * @param {*} request 
+ * @param {*} response 
+ */
 export const updateOrderSent = async (order, request, response) => {
   try {
     const id_user = request.userId;
@@ -49,6 +55,12 @@ export const updateOrderSent = async (order, request, response) => {
   }
 };
 
+/**
+ * update order(status delivered)
+ * @param {*} order 
+ * @param {*} request 
+ * @param {*} response 
+ */
 export const updateOrderDelivered = async (order, request, response) => {
   try {
     const id_user = request.userId;

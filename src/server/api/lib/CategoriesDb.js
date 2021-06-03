@@ -28,7 +28,7 @@ export default class CategoriesDb {
     }
   }
 /**
- * get all product dy category id
+ * get all product with promo dy category id
  * @param {*} id 
  * @returns 
  */
@@ -46,7 +46,11 @@ export default class CategoriesDb {
      console.error(e.message);
     }
   }
-
+/**
+ * get all products by categoryId
+ * @param {*} id 
+ * @returns 
+ */
   async getCategoryAllProducts(id) {
     try {
       let category = (await knexWebShop('Categories').where("category_id", parseInt(id)))[0];
@@ -60,7 +64,12 @@ export default class CategoriesDb {
      console.error(e.message);
     }
   }
-
+/**
+ * het all products by categoryId and tagId
+ * @param {*} category_id 
+ * @param {*} tag_id 
+ * @returns 
+ */
   async getTags(category_id, tag_id) {
     try {
       //let category = (await knexWebShop('Categories').where("category_id", parseInt(category_id)))[0];

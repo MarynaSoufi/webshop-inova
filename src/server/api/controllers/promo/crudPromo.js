@@ -13,11 +13,3 @@
   }
 };
 
-export const getAllPromo = async (database, request, response) => {
-  try {
-    response.status(200).json({ promo: await database.Promo.findAll() });
-  } catch({ message }) {
-    response.status(500);
-    response.json({ error: message });
-  }
-};

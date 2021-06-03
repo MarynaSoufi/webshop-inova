@@ -17,8 +17,6 @@ import registerOrdersEndpoints from './api/controllers/orders/ordersEndpoints.js
 import authenticate from './api/controllers/auth/index.js';
 import auth from './api/middleware/auth.js';
 
-import database from './database/index.js';
-database.connect();
 
 //init dotenv 
 dotenv.config();

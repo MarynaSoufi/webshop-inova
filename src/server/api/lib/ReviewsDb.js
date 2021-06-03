@@ -4,7 +4,7 @@ import knexWebShop from '../../db/knexWebShop.js'
 export default class ReviewsDb {
  
 /**
- * Get all revoews
+ * Get all reviews
  * 
  * @returns 
  */
