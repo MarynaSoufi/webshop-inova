@@ -2,7 +2,12 @@ import knexWebShop from '../../db/knexWebShop.js'
 
 
 export default class WishListDb {
-
+/**
+ * Add product to wishlist
+ * @param {*} product_id 
+ * @param {*} list_id 
+ * @returns 
+ */
   async addProduct(product_id, list_id ) {
     try {
       return await knexWebShop('WishListHasProducts').where( {list_id: list_id}).insert({product_id: product_id, list_id: list_id});
@@ -11,7 +16,11 @@ export default class WishListDb {
     }
   }
 
-
+/**
+ * get wishlist by userId
+ * @param {*} id 
+ * @returns 
+ */
   async getList(id) {
     try {
         const list = (await knexWebShop('WishList')

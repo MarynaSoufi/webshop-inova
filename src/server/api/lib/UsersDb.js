@@ -103,17 +103,6 @@ dotenv.config();
     }
    }
 
-   /**
-    * add profile to user
-   */
-    // async addProfile(id, firstName = null, lastName = null, mobileNumber= null, addressLine = null) {
-    //   try {
-    //     return await knexWebShop('Profiles').insert({ id: id, firstName: firstName, lastName: lastName, mobileNumber: mobile, addressLine: addressLine});
-    //   } catch (e) {
-    //     return console.error(e.message);
-    //   }
-    // }
-
     /**
     * Updates an existing user's profile
     *
