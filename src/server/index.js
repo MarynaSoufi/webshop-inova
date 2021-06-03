@@ -12,9 +12,11 @@ import registerReviewsEndpoints from './api/controllers/reviews/reviewsEndpoints
 import registerWishListEndpoints from './api/controllers/wishlist/wishListEndpoints.js';
 
 import registerCartEndpoints from './api/controllers/cart/cartEndpoints.js';
+import registerOrdersEndpoints from './api/controllers/orders/ordersEndpoints.js';
 
 import authenticate from './api/controllers/auth/index.js';
 import auth from './api/middleware/auth.js';
+
 
 //init dotenv 
 dotenv.config();
@@ -38,8 +40,8 @@ app.use('/users' ,auth, registerUsersEndpoints);
 app.use('/auth', authenticate);
 app.use('/reviews', auth, registerReviewsEndpoints);
 app.use('/wishlist', auth, registerWishListEndpoints);
-
 app.use('/cart', auth, registerCartEndpoints);
+app.use('/orders', auth, registerOrdersEndpoints);
 
 //open the application
 app.listen(process.env.PORT, () => {

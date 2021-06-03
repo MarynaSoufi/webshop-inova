@@ -1,4 +1,3 @@
-
 /**
  * add product to wishlist
  * @param {*} product 
