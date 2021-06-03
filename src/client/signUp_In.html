@@ -50,7 +50,7 @@
         <a class='log' href="/src/client/signUp_In.html?res=password">Password</a> 
         <a class='log' href="/src/client/signUp_In.html?res=orders">Order History</a> 
         <a class='log' href="/src/client/signUp_In.html?res=favorites">Wish List</a> 
-        <a class='log' href="/src/client/signUp_In.html?res=logout">Logout</a> 
+        <span class='log logOut'>Logout</span> 
         <a class='log' href="/src/client/signUp_In.html?res=out">Delete Account</a> 
       </div>
     </div>
@@ -80,26 +80,26 @@
               <label for='password'>Password:</label><br>
               <input class="password-log" type="password" name="password-log" placeholder="Password" required><br>
               <!-- submit button -->
-              <button class="btn btn--big js-login" type="submit">Login</button>
+              <button class="btn btn--big js-login" type="button">Login</button>
             </form>
           </div>
           <div class="sign__wrapper__form">
             <div class="sign__wrapper__form__title">CREATE AN ACCOUNT</div>
             <form action="" method="post">
               <!-- user input-->
-              <label for="fname">First Name:</label><br>
+              <!-- <label for="fname">First Name:</label><br>
               <input type="text" name="fname" placeholder="Your First Name..." required><br>
 
               <label for="lname">Last Name:</label><br>
-              <input type="text" name="lname" placeholder="Your Last Name..." required><br>
+              <input type="text" name="lname" placeholder="Your Last Name..." required><br> -->
               
               <label for="email">Email:</label><br>
-              <input type="text" name="email" placeholder="Email" required><br>
+              <input class='email-signUp' type="text" name="email" placeholder="Email" required><br>
 
               <label for="password">Password:</label><br>
-              <input type="password" name="password" placeholder="Password" required><br>
+              <input  class='pass-signUp' type="password" name="password" placeholder="Password" required><br>
               <!-- submit button -->
-              <button class="btn btn--big js-create"type="submit">Create</button>
+              <button class="btn btn--big js-create"type="button">Create</button>
             </form>
           </div>
           

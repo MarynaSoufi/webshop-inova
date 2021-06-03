@@ -1,5 +1,6 @@
 header{
   width:100%;
+  position: relative;
   
 }
 .upNav{
@@ -150,12 +151,17 @@ header{
   background-color:#000;
   border: 1px solid #ff8c00;
   padding: 1rem;
-  display: flex;
+  display: absolute;
   flex-direction: column;
   position: fixed;
-  top: 8rem;
+  top: 8.9rem;
   right:14.75rem;
   display: none;
+  @media (max-width:1024px){
+    width:16rem;
+    top: 6.2rem;
+    right:16%;
+  }
   &__top{
     display: flex;
     justify-content: space-between;
@@ -175,7 +181,8 @@ header{
   &__wrapper{
     display: flex;
     flex-direction: column;
-    a{
+    a, span{
+      cursor: pointer;
       text-decoration: none;
       color: #fff;
       margin-bottom: 1rem;
