@@ -6,6 +6,7 @@ import * as ordersController from './crudOrders.js';
 const getOrders = new OrderDb();
 
 const database = { order: new OrderDb(), cart: new CartDb() };
+<<<<<<< HEAD
  /**
  * @swagger
  * /orders/:orderId:
@@ -50,5 +51,12 @@ app.put('/:orderId/sent', async (req, res) => await ordersController.updateOrder
  *     description: Update order status with status delivered. 
 */
 app.put('/:orderId/delivered', async (req, res) => await ordersController.updateOrderDelivered(getOrders, req, res));
+=======
+app.get('/:orderId', async (req, res) => await ordersController.getOrder(getOrders, req, res));
+app.post('/', async (req, res) => await ordersController.placeOrder(database, req, res));
+app.put('/:orderId/sent', async (req, res) => await ordersController.updateOrderSent(getOrders, req, res));
+app.put('/:orderId/delivered', async (req, res) => await ordersController.updateOrderDelivered(getOrders, req, res));
+// app.delete("/product/:productId",  async (req, res) => await wishListController.deleteProduct(wishListData,req, res));
+>>>>>>> 4d4ab60c06af6d3ae11d194590f2eb88e939bf11
 
 export default app;

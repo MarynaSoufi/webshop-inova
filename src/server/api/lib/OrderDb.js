@@ -99,16 +99,7 @@ export default class OrderDb {
     }
   }
 
-  // async getAllOrders(id) {
-  //   try {
-  //     return await knexWebShop('Orders')
-  //       .where('user_id', parseInt(id) )
-  //   } catch (e) {
-  //     return console.error(e.message);
-  //   }
-  // }
-
-  }
+}
   
   
 

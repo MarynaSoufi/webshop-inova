@@ -20,17 +20,41 @@
       </div>
       <div class="mainNav">
         <div class="container">
+          
           <div class="mainNav__wrapper">
+            <div class = mainNav__wrapper__burger>Burger</div>
             <div class='mainNav__logo'>
-              <a href="/src/client/index.html"><img class='image image--logo' src="./assets/images/inovashop-logo-light-lato.svg" alt="Logo"/></a>
+              <a href="/src/client/index.html"><img class='image image--logoLight' src="./assets/images/inovashop-logo-light-lato.svg" alt="Logo"/></a>
+              <a href="/src/client/index.html"><img class='image image--logoDark' src="./assets/images/logo-dark.svg" alt="Logo"/></a>
             </div>
             <div class="mainNav__wrapper__links">
-              <a><img class='image image--icon'src="./assets/images/account.svg" alt='icon account' />Account</a>
-              <a href="/src/client/cart.html"><img class='image image--icon'src="./assets/images/cart.svg" alt='icon account' />Cart</a>
+              <div class = 'mainNav__wrapper__links__light ac'><img class='image image--icon'src="./assets/images/account.svg" alt='icon account' /><span>Account</span></div>
+              <a class = 'mainNav__wrapper__links__light' href="/src/client/cart.html"><img class='image image--icon'src="./assets/images/cart.svg" alt='icon account' /><span>Cart</span></a>
+              <div  class = 'mainNav__wrapper__links__dark ac'><img class='image image--icon ac'src="./assets/images/accountDark.svg" alt='icon account' /><span>Account</span></div>
+              <a class = 'mainNav__wrapper__links__dark' href="/src/client/cart.html"><img class='image image--icon'src="./assets/images/cartDark.svg" alt='icon account' /><span>Cart</span></a>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="account__modal">
+        <div class="account__modal__top">
+          <strong class='log'>My Account</strong>
+          <span class='account__modal__top__close'>X</span>
+        </div>
+        
+        <div class="account__modal__wrapper">
+          <a href="/src/client/signUp_In.html" class='unlog' >SignUp/Register</a>
+          <a href="/src/client/signUp_In.html?res=email" class='log' >Email Address</a> 
+          <a class='log' href="/src/client/signUp_In.html?res=personal">Personal Details</a> 
+          <a class='log' href="/src/client/signUp_In.html?res=password">Password</a> 
+          <a class='log' href="/src/client/signUp_In.html?res=orders">Order History</a> 
+          <a class='log' href="/src/client/signUp_In.html?res=favorites">Wish List</a> 
+          <span class='log logOut'>Logout</span>  
+          <a class='log' href="/src/client/signUp_In.html?res=out">Delete Account</a> 
+        </div>
+      </div>
+
       <div class="subNav">
         <div class = 'container'>
           <div class="subNav__list">
@@ -40,6 +64,7 @@
       </div>
     </header>
     <main>
+      
       <div class="hero">
           <video autoplay muted loop id="myVideo">
               <source src="./assets/images/herovid.mp4" type="video/mp4">
@@ -51,6 +76,24 @@
         </div>
         <ul class="items_list container">
           
+        </ul>
+      </section>
+      <section class = 'insta'>
+        <div class="inst">
+          <strong>GO INSTA, GET INSPIRED!</strong>
+        </div>
+        <ul class="insta__pics">
+          <li class='pic'><img src="./assets/images/insta1.jpg" alt="woman muscles"></li>
+          <li class='pic'><img src="./assets/images/insta3.jpg" alt="woman muscles"></li>
+          <li class = 'hide pic'><img src="./assets/images/insta2.jpg" alt="woman muscles"></li>
+          <li class='pic'><img src="./assets/images/insta4.jpg" alt="woman muscles"></li>
+          <li class = 'hide pic'><img src="./assets/images/insta6.jpg" alt="woman muscles"></li>
+          
+          <li class = 'hide pic'><img src="./assets/images/insta7.jpg" alt="woman muscles"></li>
+          <li class='pic'><img src="./assets/images/insta5.jpg" alt="woman muscles"></li>
+          <li class = 'hide pic'><img src="./assets/images/insta8.jpg" alt="woman muscles"></li>
+          <li class = 'hide pic'><img src="./assets/images/insta9.jpg" alt="woman muscles"></li>
+          <li class = 'hide pic'><img src="./assets/images/insta10.jpg" alt="woman muscles"></li>
         </ul>
       </section>
     </main>

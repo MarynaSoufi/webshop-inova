@@ -8,43 +8,114 @@
   <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-  <header>
-    <div class="upNav">
-      <div class="container">
-        <div class="upNav__links">
-          <a  href="/src/client/contact.html">Contact Us</a>
-          <a class='mainActive' href="/src/client/about.html">About Us</a>
-        </div>
-      </div>
-    </div>
-    <div class="mainNav">
-      <div class="container">
-        <div class="mainNav__wrapper">
-          <div class='mainNav__logo'>
-            <a href="/src/client/index.html"><img class='image image--logo' src="./assets/images/inovashop-logo-light-lato.svg" alt="Logo"/></a>
-          </div>
-          <div class="mainNav__wrapper__links">
-            <a><img class='image image--icon'src="./assets/images/account.svg" alt='icon account' />Account</a>
-            <a href="/src/client/cart.html"><img class='image image--icon'src="./assets/images/cart.svg" alt='icon account' />Cart</a>
+    <header>
+      <div class="upNav">
+        <div class="container">
+          <div class="upNav__links">
+            <a  href="/src/client/contact.html">Contact Us</a>
+            <a class='mainActive' href="/src/client/about.html">About Us</a>
           </div>
         </div>
       </div>
-    </div>
-    <div class="subNav">
-      <div class = 'container'>
-        <div class="subNav__list">
+      <div class="mainNav">
+        <div class="container">
+          
+          <div class="mainNav__wrapper">
+            <div class = mainNav__wrapper__burger>Burger</div>
+            <div class='mainNav__logo'>
+              <a href="/src/client/index.html"><img class='image image--logoLight' src="./assets/images/inovashop-logo-light-lato.svg" alt="Logo"/></a>
+              <a href="/src/client/index.html"><img class='image image--logoDark' src="./assets/images/logo-dark.svg" alt="Logo"/></a>
+            </div>
+            <div class="mainNav__wrapper__links">
+              <div class = 'mainNav__wrapper__links__light ac'><img class='image image--icon'src="./assets/images/account.svg" alt='icon account' /><span>Account</span></div>
+              <a class = 'mainNav__wrapper__links__light' href="/src/client/cart.html"><img class='image image--icon'src="./assets/images/cart.svg" alt='icon account' /><span>Cart</span></a>
+              <div  class = 'mainNav__wrapper__links__dark ac'><img class='image image--icon'src="./assets/images/accountDark.svg" alt='icon account' /><span>Account</span></div>
+              <a class = 'mainNav__wrapper__links__dark' href="/src/client/cart.html"><img class='image image--icon'src="./assets/images/cartDark.svg" alt='icon account' /><span>Cart</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div class="account__modal">
+        <div class="account__modal__top">
+          <strong class='log'>My Account</strong>
+          <span class='account__modal__top__close'>X</span>
+        </div>
+        
+        <div class="account__modal__wrapper">
+          <a href="/src/client/signUp_In.html" class='unlog' >SignUp/Register</a>
+          <a href="/src/client/signUp_In.html?res=email" class='log' >Email Address</a> 
+          <a class='log' href="/src/client/signUp_In.html?res=personal">Personal Details</a> 
+          <a class='log' href="/src/client/signUp_In.html?res=password">Password</a> 
+          <a class='log' href="/src/client/signUp_In.html?res=orders">Order History</a> 
+          <a class='log' href="/src/client/signUp_In.html?res=favorites">Wish List</a> 
+          <span class='log logOut'>Logout</span> 
+          <a class='log' href="/src/client/signUp_In.html?res=out">Delete Account</a> 
         </div>
       </div>
-    </div>
-  </header>
+
+      <div class="subNav">
+        <div class = 'container'>
+          <div class="subNav__list">
+
+          </div>
+        </div>
+      </div>
+    </header>
   <main>
     <div class="intro">
-      <!-- <video autoplay muted loop id="myVideo">
-          <source src="./assets/images/hero.mp4" type="video/mp4">
-      </video> -->
       <img class='image image--hero' src="./assets/images/about.jpg" alt="man doing fitness">
   </div>
+  <section class="about container">
+    <div class="about__title">
+      <strong>About Us</strong>
+    </div>
+    <div class="about__info ">
+      <div class="about__info__who">
+        <div class="about__info__who__img">
+          <img src="./assets/images/about2.jpg" />
+        </div>
+        <div class="about__info__who__text">
+          <strong>Who are we</strong>
+          <p>We are a leading sports nutrition brand, supplying a range of high-quality products,
+            including protein powder, vitamins and minerals, high-protein foods and snack
+            alternatives. Every day we work to inspire people of all ages and genders to believe
+            in their fitness potential, then incentivize them to achieve it</p>
+        </div>
+      </div>
+      <div class="about__info__what">
+        <div class="about__info__what__img">
+          <img src="./assets/images/about3.jpg" />
+        </div>
+        <div class="about__info__what__text">
+          <strong>What we do</strong>
+          <p>At INOVA, our goal is to spark the ambitions of people around the world - making 
+            the best of sports nutrition for everyone, regardless of their purpose. We pride ourselves
+            on offering a wide selection of products of exceptional value to make this possible, 
+            including a range of nutritional needs including vegetarian, vegan, dairy-free and
+            gluten-free, so that every customer can enjoy the benefits of high-quality nutrition.</p>
+        </div>
+      </div>
+      <div class="about__info__extra">
+        <div class="about__info__extra__img">
+          <img src="./assets/images/about1.jpg" />
+        </div>
+        <div class="about__info__extra__text">
+          <strong>Sustainability and community</strong>
+          <p>INOVA is passionate about fueling the potential of people regardless of gender,
+            location or background. As a global company, we are home to more than 70
+            nationalities and embrace this diversity.
+            <br/><br/>
+            As INOVA has continued to grow and diversify, this also applies to our range and we
+            nowalso specialize in a selection of plant and organic products. This vegan range has
+            expanded into one of our most popular offerings. We now supply an extensive
+            variety of products that do not contain animal substances, so we can play a role in
+            improving overall animal welfare and reducing toxic emissions.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
   </main>
   <footer>
     <div>

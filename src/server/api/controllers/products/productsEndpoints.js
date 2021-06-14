@@ -4,6 +4,7 @@ import * as productsController from './crudProducts.js'
 export default (app) => {
   
   const productData = new ProductsDb();
+<<<<<<< HEAD
  /**
  * @swagger
  * /products:
@@ -19,6 +20,11 @@ export default (app) => {
  *     summary: Get promo products
  *     description: Retrieve a list of products with promo. Can be used to populate a list of products with promo when prototyping or testing an API.
 */
+=======
+
+  // get the todos
+  app.get('/products', async (req, res) => await productsController.getProducts(productData, req, res));
+>>>>>>> 4d4ab60c06af6d3ae11d194590f2eb88e939bf11
   app.get('/products/promo', async (req, res) => await productsController.getProductsWithPromo(productData,req, res));
 
   /**

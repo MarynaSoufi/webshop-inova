@@ -7,6 +7,7 @@ import express from 'express';
  
 const reviewData = new ReviewsDb();
 
+<<<<<<< HEAD
 /**
  * @swagger
  * /reviews/product/:productId:
@@ -14,6 +15,8 @@ const reviewData = new ReviewsDb();
  *     summary: set review based on product id
  *     description: set review based on product id. 
 */
+=======
+>>>>>>> 4d4ab60c06af6d3ae11d194590f2eb88e939bf11
 app.post('/product/:productId', async (req, res) => await reviewsController.addRev(reviewData,req, res));
 
 

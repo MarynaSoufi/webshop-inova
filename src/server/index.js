@@ -20,6 +20,7 @@ import auth from './api/middleware/auth.js';
 import { swaggerSpec } from './api/middleware/swagger.middleware.js';
 
 
+
 //init dotenv 
 dotenv.config();
 

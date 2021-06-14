@@ -1,0 +1,20 @@
+.btn{
+  &--big{
+    width:10rem;
+    height: 4rem;
+    outline:none;
+    background-color:#ff8c00;
+    color:#000;
+    border: 1px solid transparent;
+    transition: all .3s ease-in-out;
+    display: block;
+    margin: 0 auto;
+    font-size: 1.25rem;
+    cursor: pointer;
+    &:hover{
+      background-color:transparent;
+      border: 1px solid #ff8c00;
+      color:#ff8c00;
+    }
+  }
+}
