@@ -28,7 +28,7 @@ export default class CategoriesDb {
     }
   }
 /**
- * get all product with promo dy category id
+ * get all product with promo by category id
  * @param {*} id 
  * @returns 
  */

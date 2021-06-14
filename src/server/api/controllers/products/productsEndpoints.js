@@ -4,15 +4,39 @@ import * as productsController from './crudProducts.js'
 export default (app) => {
   
   const productData = new ProductsDb();
-
-  // get the todos
+ /**
+ * @swagger
+ * /products:
+ *   get:
+ *     summary: Get all products
+ *     description: Retrieve a list of products. Can be used to populate a list of categories when prototyping or testing an API.
+*/
   app.get('/products', async (req, res) => await productsController.getProducts(productData, req, res));
+  /**
+ * @swagger
+ * /products/promo:
+ *   get:
+ *     summary: Get promo products
+ *     description: Retrieve a list of products with promo. Can be used to populate a list of products with promo when prototyping or testing an API.
+*/
   app.get('/products/promo', async (req, res) => await productsController.getProductsWithPromo(productData,req, res));
 
-  //get one product by index
+  /**
+ * @swagger
+ * /products/:id:
+ *   get:
+ *     summary: Get products based on given id
+ *     description: Retrieve aproduct. 
+*/
   app.get('/products/:id', async (req, res) => await productsController.getOneProduct(productData,req, res));
 
-  //search products
+  /**
+ * @swagger
+ * /search?categoryId=2&tagId=1&tagId=2&tagId=3:
+ *   get:
+ *     summary: Search products
+ *     description: Retrieve a list of products. Can be used to populate a list of products when prototyping or testing an API.
+*/
   app.get('/search', async (req, res) => await productsController.searchProducts(productData,req, res));
   
 }

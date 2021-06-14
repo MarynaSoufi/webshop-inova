@@ -81,15 +81,5 @@
     response.status(200).json(categoryDb);
   }
 
-  // export const getPromoProducts = async(category, request, response) => {
-  //   const category_id = request.params.categoryId;
-  //   const promo_id = request.params.promoId;
-  //   const categoryDb  = await category.getPromo(category_id, promo_id );
-  //   if(!categoryDb ){
-  //     response.status(404).json({error:`you do not have a promo with id ${promo_id}`});
-  //     return;
-  //   }
-  //   response.status(200).json(categoryDb );
-  // }
   
 
