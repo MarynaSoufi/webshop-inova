@@ -72,7 +72,6 @@ export const updateOrderDelivered = async (order, request, response) => {
   }
 };
 
-<<<<<<< HEAD
 export const getAllOrders = async (order, req, res) => {
   try {
     const id_user = req.userId;
@@ -84,5 +83,3 @@ export const getAllOrders = async (order, req, res) => {
   }
 };
 
-=======
->>>>>>> 4d4ab60c06af6d3ae11d194590f2eb88e939bf11
