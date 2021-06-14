@@ -20,6 +20,7 @@
         const products = await knexWebShop('Products')
         .innerJoin("CartHasProducts", "CartHasProducts.product_id", "Products.product_id")
         .innerJoin("Cart", "Cart.cart_id", "CartHasProducts.cart_id")
+        .where('Cart.cart_id', cart.cart_id)
         .select("Products .*", "CartHasProducts.quantity")
         cart.products = products;
         return cart;

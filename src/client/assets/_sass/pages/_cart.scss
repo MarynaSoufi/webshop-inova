@@ -1,4 +1,5 @@
 .cart{
+
   &__total{
     display:flex;
     justify-content: flex-end;
@@ -189,6 +190,45 @@
       }
     }
   }
+  &__processModal{
+    width:100vw;
+    height:100vh;
+    background-color:#000;
+    opacity: .8;
+    position:fixed;
+    right:0;
+    left: 0;
+    top: 0;
+    display: none;
+    &__text{
+      padding: 0;
+      margin: 0;
+      text-align: center;
+      font-size: 1.5rem;
+      animation: pulse 2s infinite;
+      padding-top: 30%;
+      @media(max-width: 1024px){
+        padding-top: 60%!important;
+        font-size: 1.75rem;
+      }
+    }
+    @keyframes pulse {
+      0% {
+        transform: scale(0.9);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+      }
+      
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+      }
+      
+      100% {
+        transform: scale(0.9);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+      }
+    }
+  }
   &__payModal{
     display:none;
     width:647px;
@@ -229,7 +269,7 @@
       }
     }
     &__orderDetails, &__userDetails{
-      padding: 2rem 1rem;
+      padding: 1rem 1rem;
       &__title{
         display:flex;
         justify-content: space-between;
@@ -260,4 +300,5 @@
       }
     }
   }
+  
 }

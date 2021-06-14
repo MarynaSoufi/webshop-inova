@@ -63,6 +63,11 @@
     </header>
   <main>
     <section class="cart container">
+      <div class="cart__processModal js-process">
+        <p class="cart__processModal__text js-processText">
+          Payment in process
+        </p>
+      </div>
       <p class='cart__title'>My Shopping Cart</p>
       <div class="cart__list">
         <div class='cart__list__headers'>
@@ -88,23 +93,17 @@
         </div>
         <div class="cart__payModal__orderDetails">
           <p class="cart__payModal__orderDetails__title">Order Details</p>
-          <div class="cart__payModal__orderDetails__info">
-            <div class="cart__payModal__orderDetails__info__item">
-              <p>ORDER NUMBER</p>
-              <p class="cart__payModal__orderDetails__info__item__number">
-                1-41
-              </p>
-            </div>
+          <div class="cart__payModal__orderDetails__info">      
             <div class="cart__payModal__orderDetails__info__item">
               <p>AMOUNT ITEMS</p>
-              <p class="cart__payModal__orderDetails__info__item__amount">
-                3
+              <p class="cart__payModal__orderDetails__info__item__amount js-orderAmount">
+           
               </p>
             </div>
             <div class="cart__payModal__orderDetails__info__item">
               <p>TOTAL PRICE</p>
-              <p class="cart__payModal__orderDetails__info__item__price">
-                30
+              <p class="cart__payModal__orderDetails__info__item__price js-orderPrice">
+               
               </p>
             </div>
           </div>
@@ -116,29 +115,30 @@
           <div class="cart__payModal__userDetails__info">
             <div class="cart__payModal__userDetails__info__item">
               <p>NAME</p>
-              <p class="cart__payModal__userDetails__info__item__name">
-                Eddin Soufi
+              <p class="cart__payModal__userDetails__info__item__name js-payNAme">
+             
               </p>
             </div>
             <div class="cart__payModal__userDetails__info__item">
               <p>MOBILE NUMBER</p>
-              <p class="cart__payModal__userDetails__info__item__number">
-                00324563776
+              <p class="cart__payModal__userDetails__info__item__number js-payerNumber">
+            
               </p>
             </div>
             <div class="cart__payModal__userDetails__info__item">
               <p>ADDRESS</p>
-              <p class="cart__payModal__userDetails__info__item__address">
-                Brugwegel 23, 9070 Destelbergen, Begium
+              <p class="cart__payModal__userDetails__info__item__address js-payerAdderss">
               </p>
             </div>
           </div>
         </div>
 
         <div class="cart__payModal__header">
-          <button class='btn btn--dark'>NEXT</button>
+          <button class='btn btn--dark js-next'>NEXT</button>
         </div>
       </div>
+
+      
       
     </section>
   </main>

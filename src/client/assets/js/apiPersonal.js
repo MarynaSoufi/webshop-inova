@@ -19,9 +19,6 @@ export const createPersonal = (profile) =>{
 
   
   if($signSection){
-    // const queryString = window.location.search;
-    // const urlParams = new URLSearchParams(queryString);
-    // const res = urlParams.get('res');
     if(res == 'personal'){
       $signSection.style.display ='none';
       $wishlist.style.display ='none';

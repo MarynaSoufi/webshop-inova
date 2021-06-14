@@ -15,6 +15,13 @@ export const placeOrder = async (database, request, response) => {
 
     await database.cart.deleteAll(cart.cart_id);
   
+    setTimeout(async () => {
+      await database.order.updateSent(id_user, createdOrder);
+      setTimeout(async () => {
+        await database.order.updateDelivered(id_user, createdOrder);
+      }, 20000);
+    }, 20000);
+
     response.status(201).json({ order: createdOrder });    
   } catch({ message }) {
     response.status(500).json({ error: message });

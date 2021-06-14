@@ -5,6 +5,7 @@ const $cartList = document.querySelector('.cart__list');
 const $cartTotal = document.querySelector('.cart__total__text');
 const $payModal = document.querySelector('.js-pModal');
 const $closePayModal = document.querySelector('.js-closeModal');
+let res = '';
 
 /**
  * user gets own cart
@@ -20,7 +21,7 @@ const $closePayModal = document.querySelector('.js-closeModal');
     return list;
   }
   else{
-    return;
+    return list;
   }
 };
 
@@ -64,8 +65,9 @@ const createCartSection = (list)=>{
     total.forEach((e)=>{
       arrTotal.push(parseFloat(e.innerHTML));
     })
-    const res = arrTotal.reduce((a, b) => a + b, 0);
-    $cartTotal.innerHTML = `<p>Subtotal:</p><p>€ ${Math.round(res)}</p>`
+    res = arrTotal.reduce((a, b) => a + b, 0);
+    res = res.toFixed(2)
+    $cartTotal.innerHTML = `<p>Subtotal:</p><p>€ ${res}</p>`
   }
 
   const addToCart = document.querySelectorAll('.addToCart');
@@ -149,11 +151,61 @@ const delAllItemFromMyCart = async(product) => {
 };
 
 const createModalPay = async () =>{
-  const profile = await getProfile();
-  console.log(profile);
+  const { firstName, LastName, mobileNumber, addressLine } = await getProfile();
+  const result =  await call(`${base_url}/cart`, 'GET');
+  const myCart = result.cart.products;
+  const $namePayer = document.querySelector('.js-payNAme');
+  const $numberPayer = document.querySelector('.js-payerNumber');
+  const $addressPayer = document.querySelector('.js-payerAdderss');
+  const $orderAmount = document.querySelector('.js-orderAmount');
+  const $orderPrice = document.querySelector('.js-orderPrice');
+  if(firstName || LastName){
+    $namePayer.innerText = `${firstName} ${LastName}`
+  }
+  else{
+    alert('Fill your personal information please');
+    window.location.replace('http://127.0.0.1:5500/src/client/signUp_In.html?res=personal');
+    return;
+  }
+  if(mobileNumber){
+    $numberPayer.innerText = `${mobileNumber}`
+  }
+  else{
+    alert('Fill your personal information please');
+    window.location.replace('http://127.0.0.1:5500/src/client/signUp_In.html?res=personal');
+    return;
+  }
+  if(addressLine){
+    $addressPayer.innerText = `${addressLine}`
+  }
+  else{
+    alert('Fill your personal information please');
+    window.location.replace('http://127.0.0.1:5500/src/client/signUp_In.html?res=personal');
+    return;
+  }
+  $orderAmount.innerText= myCart.length;
+  $orderPrice.innerText= `€ ${res}`;
   $closePayModal.addEventListener('click', ()=>{
-    
     $payModal.style.display = 'none'
   })
   
+} 
+
+const $nextBtn = document.querySelector('.js-next');
+const $processModal = document.querySelector('.js-process');
+const $processModalText = document.querySelector('.js-processText');
+if($nextBtn) {
+  $nextBtn.addEventListener('click', async (e)=>{
+    e.preventDefault();
+    $payModal.style.display = 'none'
+    $processModal.style.display = 'block';
+    setTimeout(async () => {
+      $processModalText.innerText= 'Paid Successfully!'
+      setTimeout(async () => {
+        await call(`${base_url}/orders`, 'POST', null);
+        $processModal.style.display = 'none';
+      }, 2500);
+    }, 3500);
+
+  })
 }
