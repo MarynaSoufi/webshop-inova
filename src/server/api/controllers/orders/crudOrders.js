@@ -72,3 +72,14 @@ export const updateOrderDelivered = async (order, request, response) => {
   }
 };
 
+export const getAllOrders = async (order, req, res) => {
+  try {
+    const id_user = req.userId;
+    const orderDb = await order.getAllOrders(id_user);
+    if (!order) throw new Error("order not found");
+    res.status(200).json(orderDb);
+  } catch (message) {
+    res.status(404).json({ error: message.toString() });
+  }
+};
+

@@ -27,8 +27,9 @@ export default class CategoriesDb {
       return console.error(e.message);
     }
   }
-/**
+/*
  * get all product with promo dy category id
+
  * @param {*} id 
  * @returns 
  */

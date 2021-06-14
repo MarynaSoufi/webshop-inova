@@ -72,7 +72,34 @@ export default class OrderDb {
     }
   }
 
+  /**
+ * get all orders
+ * @param {*} id 
+ * @returns 
+ */
+   async getAllOrders(user_id) {
+    try {
+        const order = (await knexWebShop('Orders')
+        .where('user_id', parseInt(user_id))        
+        .select('Orders .*'));
+        const orderIds = order.map(o => o.order_id);
+        
+        const products = await knexWebShop('Products')
+        .innerJoin("OrderHasProducts", "OrderHasProducts.product_id", "Products.product_id")
+        .innerJoin("Orders", "Orders.order_id", "OrderHasProducts.order_id")
+        .whereIn('Orders.order_id', orderIds)
+        .select("Products .*", "OrderHasProducts.quantity", "OrderHasProducts.order_id")
+        
+        order.forEach(o => {
+          o.products = products.filter(p => p.order_id == o.order_id);
+        });
+        return order;
+    } catch (e) {
+      return console.error(e.message);
+    }
   }
+
+}
   
   
 

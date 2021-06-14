@@ -14,16 +14,10 @@ export default class ProductsDb {
       console.error(message);
     }
   }
-
-  // async getAllProductsWithPromo() {
-  //   try {
-  //     const product =  await knexWebShop('Products')
-  //     .where("Products.promo_id", !null)
-  //      return product
-  //   } catch (message) {
-  //     console.error(message);
-  //   }
-  // }
+/**
+ * get all products wuth promo
+ * @returns 
+ */
 
   async getAllProductsWithPromo() {
     try {
@@ -37,6 +31,11 @@ export default class ProductsDb {
     }
   }
 
+/**
+ * get product by id(with reviews, tags)
+ * @param {*} id 
+ * @returns 
+ */
   async getProduct(id) {
     try {
       const product =  (await knexWebShop('Products')
@@ -64,6 +63,11 @@ export default class ProductsDb {
     }
   }
 
+  /**
+   * filter by tags
+   * @param {*} query 
+   * @returns 
+   */
   async search(query) {
     try {
       const products = await knexWebShop('Products')      
