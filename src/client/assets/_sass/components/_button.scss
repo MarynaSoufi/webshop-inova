@@ -1,20 +1,53 @@
 .btn{
-  &--big{
-    width:10rem;
-    height: 4rem;
+  &--dark{
     outline:none;
-    background-color:#ff8c00;
-    color:#000;
-    border: 1px solid transparent;
+    background-color:#000;
+    color:#ff8c00;
+    border: 2px solid transparent;
     transition: all .3s ease-in-out;
     display: block;
     margin: 0 auto;
+    width:10rem;
+    height: 4rem;
     font-size: 1.25rem;
     cursor: pointer;
     &:hover{
       background-color:transparent;
-      border: 1px solid #ff8c00;
+      border: 2px solid #000;
+      color:#000;
+    }
+  }
+  &--big, &--md, &--basic{
+   
+    outline:none;
+    background-color:#ff8c00;
+    color:#000;
+    border: 2px solid transparent;
+    transition: all .3s ease-in-out;
+    display: block;
+    margin: 0 auto;
+    
+    cursor: pointer;
+    &:hover{
+      background-color:transparent;
+      border: 2px solid #ff8c00;
       color:#ff8c00;
     }
+  }
+  &--big{
+    width:10rem;
+    height: 4rem;
+    font-size: 1.25rem;
+  }
+  &--md{
+    
+    padding: .5rem 1rem;
+    border-radius: 1rem;
+    font-size: .9rem;
+  }
+  &--basic{
+    
+    padding: .5rem 1rem;
+    font-size: .9rem;
   }
 }

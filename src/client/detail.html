@@ -45,10 +45,10 @@
         <div class="account__modal__wrapper">
           <a href="/src/client/signUp_In.html" class='unlog' >SignUp/Register</a>
           <a href="/src/client/signUp_In.html?res=email" class='log' >Email Address</a> 
-          <a class='log' href="/src/client/signUp_In.html?res=personal">Personal Details</a> 
+          <a class='log personalBtn' href="/src/client/signUp_In.html?res=personal">Personal Details</a> 
           <a class='log' href="/src/client/signUp_In.html?res=password">Password</a> 
           <a class='log' href="/src/client/signUp_In.html?res=orders">Order History</a> 
-          <a class='log' href="/src/client/signUp_In.html?res=favorites">Wish List</a> 
+          <a class='log wishListBtn' href="/src/client/signUp_In.html?res=favorites">Wish List</a> 
           <span class='log logOut'>Logout</span> 
           <a class='log' href="/src/client/signUp_In.html?res=out">Delete Account</a> 
         </div>
@@ -64,7 +64,14 @@
     </header>
   <main>
     <section class="container detail">
-      <div class="detail_info">
+      <div class="detail__info">
+      </div>
+      <div class="detail__reviewer">
+        <p class="detail__reviewer__title">
+          Leave a Review
+        </p>
+        <textarea  class='detail__reviewer__input js-review'></textarea>
+        <button class='btn btn--big js-send'>Send</button>
       </div>
     </section>
   </main>

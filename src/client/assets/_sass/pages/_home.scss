@@ -64,7 +64,56 @@ body{
     
   }
 }
-.listHome{
+.listHome, .wishlist, .listGroup{
+  .titleW, .cat{
+    margin: 4rem 0;
+    font-size: 1.5rem;
+  }
+  .filterFrame{
+    width:23.7%;
+    height: 2rem;
+    border:1px solid #ff8c00;
+    color: #ff8c00;
+    padding: 0;
+    z-index: 1000;
+ 
+    &__title{
+      cursor: pointer;
+      padding:.5rem;
+      margin: 0;
+      
+    }
+    .filter{
+      margin: 0;
+      
+      display:none;
+      list-style: none;
+      padding: 0;
+      border:1px solid #ff8c00;
+      color: #ff8c00;
+      background-color: #000;
+      li{
+        padding: .5rem;
+        
+        border-bottom: 1px solid #ff8c00;
+        
+        input{
+          width:0;
+          opacity: 0;
+        }
+        &:hover{
+          background-color:#fff;
+          color: #000;
+        }
+      }
+    }
+  }
+
+  .optionsWrapper{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   &__items{
     display:flex;
     justify-content: space-between;
@@ -120,4 +169,5 @@ body{
   }
 
 }
+
 

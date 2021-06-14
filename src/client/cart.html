@@ -21,14 +21,13 @@
         <div class="container">
           
           <div class="mainNav__wrapper">
-            <div class = mainNav__wrapper__burger>Burger</div>
             <div class='mainNav__logo'>
               <a href="/src/client/index.html"><img class='image image--logoLight' src="./assets/images/inovashop-logo-light-lato.svg" alt="Logo"/></a>
               <a href="/src/client/index.html"><img class='image image--logoDark' src="./assets/images/logo-dark.svg" alt="Logo"/></a>
             </div>
             <div class="mainNav__wrapper__links">
               <div class = 'mainNav__wrapper__links__light ac'><img class='image image--icon'src="./assets/images/account.svg" alt='icon account' /><span>Account</span></div>
-              <a class = 'mainNav__wrapper__links__light' href="/src/client/cart.html"><img class='image image--icon'src="./assets/images/cart.svg" alt='icon account' /><span>Cart</span></a>
+              <a class = 'mainNav__wrapper__links__light mainActive' href="/src/client/cart.html"><img class='image image--icon'src="./assets/images/cart.svg" alt='icon account' /><span>Cart</span></a>
               <div  class = 'mainNav__wrapper__links__dark ac'><img class='image image--icon'src="./assets/images/accountDark.svg" alt='icon account' /><span>Account</span></div>
               <a class = 'mainNav__wrapper__links__dark' href="/src/client/cart.html"><img class='image image--icon'src="./assets/images/cartDark.svg" alt='icon account' /><span>Cart</span></a>
             </div>
@@ -45,10 +44,10 @@
         <div class="account__modal__wrapper">
           <a href="/src/client/signUp_In.html" class='unlog' >SignUp/Register</a>
           <a href="/src/client/signUp_In.html?res=email" class='log' >Email Address</a> 
-          <a class='log' href="/src/client/signUp_In.html?res=personal">Personal Details</a> 
+          <a class='log personalBtn' href="/src/client/signUp_In.html?res=personal">Personal Details</a> 
           <a class='log' href="/src/client/signUp_In.html?res=password">Password</a> 
           <a class='log' href="/src/client/signUp_In.html?res=orders">Order History</a> 
-          <a class='log' href="/src/client/signUp_In.html?res=favorites">Wish List</a> 
+          <a class='log wishListBtn' href="/src/client/signUp_In.html?res=favorites">Wish List</a> 
           <span class='log logOut'>Logout</span> 
           <a class='log' href="/src/client/signUp_In.html?res=out">Delete Account</a> 
         </div>
@@ -62,7 +61,87 @@
         </div>
       </div>
     </header>
-  <main></main>
+  <main>
+    <section class="cart container">
+      <p class='cart__title'>My Shopping Cart</p>
+      <div class="cart__list">
+        <div class='cart__list__headers'>
+          <p class='cart__list__headers__desc'>Description</p>
+          <p class='cart__list__headers__amount'>Amount</p>
+          <p class='cart__list__headers__price'>Price</p>
+         </div>
+      </div>
+      <div class="cart__total">
+        <div class="cart__total__text"></div>
+      </div>
+      <div class="cart__pay">
+        <div class="cart__pay__btns">
+          <button class="btn btn--basic js-payBtnP">Pay Via Paypal</button>
+          <button class="btn btn--basic js-payBtnB">Pay Via Bancontact</button>
+        </div>
+      </div>
+
+      <div class="cart__payModal js-pModal">
+        <div class="cart__payModal__header">
+          <p class="cart__payModal__header__title">Shpping Details</p>
+          <span class="cart__payModal__header__close js-closeModal">X</span>
+        </div>
+        <div class="cart__payModal__orderDetails">
+          <p class="cart__payModal__orderDetails__title">Order Details</p>
+          <div class="cart__payModal__orderDetails__info">
+            <div class="cart__payModal__orderDetails__info__item">
+              <p>ORDER NUMBER</p>
+              <p class="cart__payModal__orderDetails__info__item__number">
+                1-41
+              </p>
+            </div>
+            <div class="cart__payModal__orderDetails__info__item">
+              <p>AMOUNT ITEMS</p>
+              <p class="cart__payModal__orderDetails__info__item__amount">
+                3
+              </p>
+            </div>
+            <div class="cart__payModal__orderDetails__info__item">
+              <p>TOTAL PRICE</p>
+              <p class="cart__payModal__orderDetails__info__item__price">
+                30
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cart__payModal__userDetails">
+          <p class="cart__payModal__userDetails__title">Your Details <a href='./signUp_In.html?res=personal'>EDIT</a></p>
+          
+          <div class="cart__payModal__userDetails__info">
+            <div class="cart__payModal__userDetails__info__item">
+              <p>NAME</p>
+              <p class="cart__payModal__userDetails__info__item__name">
+                Eddin Soufi
+              </p>
+            </div>
+            <div class="cart__payModal__userDetails__info__item">
+              <p>MOBILE NUMBER</p>
+              <p class="cart__payModal__userDetails__info__item__number">
+                00324563776
+              </p>
+            </div>
+            <div class="cart__payModal__userDetails__info__item">
+              <p>ADDRESS</p>
+              <p class="cart__payModal__userDetails__info__item__address">
+                Brugwegel 23, 9070 Destelbergen, Begium
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cart__payModal__header">
+          <button class='btn btn--dark'>NEXT</button>
+        </div>
+      </div>
+      
+    </section>
+  </main>
   <footer>
     <div>
       © 2021 INOVA

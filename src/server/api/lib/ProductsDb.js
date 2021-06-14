@@ -51,8 +51,9 @@ export default class ProductsDb {
 
       const reviews = await knexWebShop('Reviews')
       .innerJoin("Products", "Reviews.product_id", "Products.product_id")
+      .innerJoin("Profiles", "Reviews.user_id", "Profiles.user_id")
       .where('Reviews.product_id', parseInt(id))
-      .select("Reviews.*");
+      .select("Reviews.*", "Profiles.firstName", "Profiles.LastName");
 
       product.reviews = reviews;
 

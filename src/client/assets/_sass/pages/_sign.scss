@@ -51,3 +51,50 @@
     
   }
 }
+
+.personal{
+  &__title{
+    margin: 4rem 0;
+    font-size: 1.5rem;
+  }
+  @media (max-width: 768px){
+    &__title{
+      font-size: 1rem;
+    }
+  }
+
+  &__form{
+    display:flex;
+    justify-content: center;
+    align-items: start;
+    margin-bottom: 4rem;
+    
+    width: 100%;
+    &__wrapper{
+      width: 85%;
+      &__item{
+        label{
+          font-size: 1.25rem;
+        }
+        input{
+          margin-top: 1rem;
+          margin-bottom: 2rem;
+          width: 99%;
+          height:68px;
+          padding: .5rem 1rem;
+          color: #fff;
+          background-color:transparent;
+          outline: none;
+          border: 1px solid #ff8c00;
+          
+        }
+        
+      }
+      
+    }
+   
+    
+  }
+
+
+}

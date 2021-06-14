@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>INOVA | Home</title>
   <link rel="stylesheet" href="assets/css/main.css">
+
 </head>
 <body>
   
@@ -22,7 +23,7 @@
         <div class="container">
           
           <div class="mainNav__wrapper">
-            <div class = mainNav__wrapper__burger>Burger</div>
+            
             <div class='mainNav__logo'>
               <a href="/src/client/index.html"><img class='image image--logoLight' src="./assets/images/inovashop-logo-light-lato.svg" alt="Logo"/></a>
               <a href="/src/client/index.html"><img class='image image--logoDark' src="./assets/images/logo-dark.svg" alt="Logo"/></a>
@@ -46,10 +47,10 @@
         <div class="account__modal__wrapper">
           <a href="/src/client/signUp_In.html" class='unlog' >SignUp/Register</a>
           <a href="/src/client/signUp_In.html?res=email" class='log' >Email Address</a> 
-          <a class='log' href="/src/client/signUp_In.html?res=personal">Personal Details</a> 
+          <a class='log personalBtn' href="/src/client/signUp_In.html?res=personal">Personal Details</a> 
           <a class='log' href="/src/client/signUp_In.html?res=password">Password</a> 
           <a class='log' href="/src/client/signUp_In.html?res=orders">Order History</a> 
-          <a class='log' href="/src/client/signUp_In.html?res=favorites">Wish List</a> 
+          <a class='log wishListBtn' href="/src/client/signUp_In.html?res=favorites">Wish List</a> 
           <span class='log logOut'>Logout</span>  
           <a class='log' href="/src/client/signUp_In.html?res=out">Delete Account</a> 
         </div>
@@ -70,13 +71,32 @@
               <source src="./assets/images/herovid.mp4" type="video/mp4">
           </video>
       </div>
-      <section class="items">
+      <section class="items container">
         <div class="promo">
           <strong>PROMO</strong>
-        </div>
-        <ul class="items_list container">
           
+        </div>
+        <div class='cat'></div>
+        <!-- <div class="optionsWrapper">
+          <select name="sort" id="sort">
+            <option value="Sort by name (A-Z)">Sort by name (A-Z)</option>
+            <option value="Sort by name (Z-A)">Sort by name (Z-A)</option>
+            <option value="Sort by price (Low-High)">Sort by price (Low-High)</option>
+            <option value="Sort by price (High-Low)">Sort by price (High-Low)</option>
+          </select>
+          <div  class="filterFrame">
+            <p class="filterFrame__title">Filters</p>
+            <ul class="filter">
+              <li>
+                <label for='0' class='checkFilter'  id=0>All</label>
+                <input class='boxFilter' type="checkbox"  id='0'>
+              </li>
+            </ul>
+          </div>
+        </div> -->
+        <ul class="items_list ">
         </ul>
+        
       </section>
       <section class = 'insta'>
         <div class="inst">
@@ -103,5 +123,6 @@
       </div>
     </footer>
   <script type="module" src="./assets/js/main.js"></script>
+  
 </body>
 </html>
