@@ -1,13 +1,20 @@
 import { base_url } from './consts.js';
 import {call} from './consts.js';
 
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const res = urlParams.get('res');
+
+const $signSection = document.querySelector('.sign');
+const $wishlist = document.querySelector('.wishlist');
+const $personal = document.querySelector('.personal');
 const $orders = document.querySelector('.orders');
-const $ordersList = document.querySelector('.orders__items');
+const $ordersList = document.querySelector('.orders__list');
 const $ordersTitle = document.querySelector('.titleO');
 
 export const getOwnorders = async()=>{
   const orders = await call(`${base_url}/orders`, 'GET');
-  console.log(orders)
+  console.log(orders.length)
   if(orders.name !== 'JsonWebTokenError'){
     createordersList(orders);
     return orders;
@@ -17,67 +24,47 @@ export const getOwnorders = async()=>{
   }
 };
 const createordersList = (orders) => {
+  if(res && res=='orders'){
+    $signSection.style.display ='none';
+    $wishlist.style.display ='none';
+    $personal.style.display ='none';
+    $ordersTitle.innerText = 'My Orders';
+  }
   let str = '';
   orders.forEach((e)=>{
-    const products = e.products;
-    console.log(products)
-    const q = products.quantity;
-    const p = products.price;
-    const t = q * p;
+    const prices = e.products.map(e=>e.quantity * e.price).reduce(function (a, b) {
+      return a+b;
+    }, 0);
+    console.log(prices)
     str+=`
-      
-    <div class='order__list__item'>
-      <div class='order__list__item__id'>
+    <div class='orders__list__item' href='http://127.0.0.1:5500/src/client/signUp_In.html?res=orders?id=${e.order_id}'>
+      <div class='orders__list__item__text'>
           <p>${e.order_id}</p>
       </div>
-      <div class='order__list__item__date'>
-          <p>${e.date}</p>
+      <div class='orders__list__item__text'>
+          <p>${e.date.slice(0,10)}</p>
       </div>
-       
-        <div class='cart__list__item__price'>
-        
-          <p class='cart__list__item__price__total'>${e.quantity * e.price}</p>
-          <button type="button" value=${e.product_id} class='cart__list__item__price__delete delItemFromCart'>X</button>
-        </div>
-      
-    </div>
-    
-    
+      <div class='orders__list__item__text'>
+        <p>€ ${prices}</p>
+      </div>
+      <div class='orders__list__item__text'>
+        <p>${e.status}</p>
+      </div>
+    </div>    
     `;
+    if($ordersList){
+      $ordersList.innerHTML = str;
+      
+    }
+
+    // if(orders.length === 0){
+    //   if($orders){
+    //     const noItems = document.createElement('div');
+    //     noItems.innerText = 'No items found in orders history';
+    //     noItems.classList.add('orders__noItems')
+    //     $orders.appendChild(noItems)
+    //   }
+    // }
+   
   })
 }
-// const createWishList = (list)=>{
-//   const queryString = window.location.search;
-//   const urlParams = new URLSearchParams(queryString);
-//   const res = urlParams.get('res');
-//   const $signSection = document.querySelector('.sign');
-//   const $personal = document.querySelector('.personal');
-//   const $wishlist = document.querySelector('.wishlist');
-//   const $wishTitle = document.querySelector('.titleW');
-//   if(res && res == 'favorites'){
-//     $signSection.style.display ='none';
-//     $personal.style.display = 'none';
-    
-//     let str= '';
-//     if ($wishlist){
-//       list.forEach((e)=>{
-//         str+=`
-//         <a href ='/src/client/detail.html?productId=${e.product_id}&prductName=${e.name}'>
-//           <img src="./assets/images/${e.image}.jpg" alt="image ${e.name}" class = 'image image--list'/>
-//           <strong>${e.name}</strong>
-//           <div class='price'>
-//             <p class='price__amount'>€${e.price}</p>
-//             <p class='price__disc'>${e.promo_id > 0 ? '(you save €' + `${Math.round(e.price * 0.1)}.00)` : ''}</p>
-//           </div>
-//         </a>
-//         `;
-//       });
-//       $wishlistItems.innerHTML = str;
-//       $wishTitle.innerText = 'My wish list'
-//     }
-//   }
-//     else if(res && res!='favorites'){
-
-//       $wish.style.display = 'none';
-//     }
-// };

@@ -8,6 +8,7 @@ import {fetchItems} from './apiProducts.js';
 import { fetchItemDetail } from './apiDetail.js';
 import { getOwnCart } from './apiCart.js';
 import { getOwnorders } from './apiOrders.js';
+import { call } from './consts.js';
 
 // <-- IMPORTS END
 
@@ -55,6 +56,8 @@ const app = {
     this.$loginBtn = document.querySelector('.js-login');
     this.$logInInputEmail = document.querySelector('.email-log');
     this.$logInInputpass = document.querySelector('.password-log');
+
+    this.$deleteAccount = document.querySelector('.js-delete');
 
     this.$createBtn = document.querySelector('.js-create');
     this.$signUpEmail = document.querySelector('.email-signUp');
@@ -158,10 +161,21 @@ const app = {
         const password = this.$signUppass.value;
         this.info = { user: {email: email, password: password} };
         await this.signUp(this.info);
-        console.log('created')
-        window.location.href = "http://127.0.0.1:5500/src/client/index.html";
       });
-    }   
+    } 
+    
+    if(this.$deleteAccount){
+      this.$deleteAccount.addEventListener('click', async(e)=>{
+        e.preventDefault();
+        const deleteChecker = confirm('Attention you are deleting your account and all the related information!!');
+        if(deleteChecker){
+          await call(`${base_url}/users`, 'DELETE', null);
+          window.localStorage.removeItem('token');
+          window.location.href = "http://127.0.0.1:5500/src/client/signUp_In.html";
+          
+        }
+      })
+    }
   },
 
 

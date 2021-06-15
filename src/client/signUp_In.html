@@ -45,13 +45,13 @@
       
       <div class="account__modal__wrapper">
         <a href="/src/client/signUp_In.html" class='unlog' >SignUp/Register</a>
-        <a href="/src/client/signUp_In.html?res=email" class='log' >Email Address</a> 
+        <!-- <a href="/src/client/signUp_In.html?res=email" class='log' >Email Address</a>  -->
         <a class='log personalBtn' href="/src/client/signUp_In.html?res=personal">Personal Details</a> 
-        <a class='log' href="/src/client/signUp_In.html?res=password">Password</a> 
+        <!-- <a class='log' href="/src/client/signUp_In.html?res=password">Password</a>  -->
         <a class='log' href="/src/client/signUp_In.html?res=orders">Order History</a> 
         <a class='log wishListBtn' href="/src/client/signUp_In.html?res=favorites">Wish List</a> 
         <span class='log logOut'>Logout</span> 
-        <a class='log' href="/src/client/signUp_In.html?res=out">Delete Account</a> 
+        <span class='log js-delete'>Delete Account</span> 
       </div>
     </div>
 
@@ -116,11 +116,22 @@
 
         </ul>
       </section>
-      <section class="orders container">
-        <div class="titleO"></div>
-        <ul class="orders__items">
+      <section class="container">
+        <div class="orders">
+          <div class="orders__titleO titleO"></div>
+          <div class="orders__top ">
+            <div class='orders__top__headers'>
+              <p class='orders__top__headers__num'>Number</p>
+              <p class='orders__top__headers__date'>Date</p>
+              <p class='orders__top__headers__price'>Price</p>
+              <p class='orders__top__headers__status'>Status</p>
+            </div>
+          </div>
+          <ul class="orders__list ">
 
-        </ul>
+          </ul>
+        </div>
+        
       </section>
       
 

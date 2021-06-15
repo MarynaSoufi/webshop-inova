@@ -9,12 +9,15 @@ export const call = async(url, method, body) =>{
     options.body = body;
   }
   const data =await fetch(url, options);
+  if(data.status == 204 || data.status == 201) {
+    return;
+  }
   const json =await data.json();
  
   if(json.name === 'TokenExpiredError'){
     window.localStorage.removeItem('token');
-    alert('Session expired, please login');
-    window.location.href = "http://127.0.0.1:5500/src/client/signUp_In.html";
+    // alert('Session expired, please login');
+    // window.location.href = "http://127.0.0.1:5500/src/client/signUp_In.html";
   }
   return json;
 };

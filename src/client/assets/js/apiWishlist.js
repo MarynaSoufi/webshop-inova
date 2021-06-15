@@ -50,4 +50,13 @@ const createWishList = (list)=>{
 
       $wish.style.display = 'none';
     }
+
+    if(list && list.length === 0){
+      if($wish){
+        const noItems = document.createElement('div');
+        noItems.innerText = 'No items found in your wish-list';
+        noItems.classList.add('wishlist__noItems')
+        $wish.appendChild(noItems);
+      }
+    }     
 };

@@ -1,5 +1,9 @@
 .cart{
-
+  &__noItems{
+    text-align: center;
+    color: #ff8c00;
+    font-size: 1.25rem;
+  }
   &__total{
     display:flex;
     justify-content: flex-end;

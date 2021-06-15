@@ -11,13 +11,11 @@ let res = '';
  * user gets own cart
  */
  export const getOwnCart = async()=>{
-  const result =  await call(`${base_url}/cart`, 'GET');
-  console.log(result);
-  const list = result.cart.products;
-  
-  if(result.name !== 'JsonWebTokenError'){
-    
+  const result =  await call(`${base_url}/cart`, 'GET');  
+  if(result && result.name !== 'JsonWebTokenError'){
+    const list = result.cart.products;
     createCartSection(list);
+    console.log(list);
     return list;
   }
   else{
@@ -26,12 +24,12 @@ let res = '';
 };
 
 const createCartSection = (list)=>{
-  
+
   const cartItems = list.map(i => i.product_id);
   let str = '';
   if($cartList){
     
-    console.log(list)
+    console.log(list.length)
     list.forEach((e)=>{
       str+=`
       
@@ -124,14 +122,29 @@ const createCartSection = (list)=>{
 
   const bancontactBtn = document.querySelector('.js-payBtnB');
   if(bancontactBtn){
-  bancontactBtn.addEventListener('click',(e)=>{
-    e.preventDefault();
-    console.log('Bancontact');
-    createModalPay();
-    $payModal.style.display = 'block';
-  })
-}
-      
+    bancontactBtn.addEventListener('click',(e)=>{
+      e.preventDefault();
+      console.log('Bancontact');
+      createModalPay();
+      $payModal.style.display = 'block';
+    })
+  }
+
+  if(list.length === 0){
+    const totalPrice = document.querySelector('.cart__total__text');
+    if(bancontactBtn && paypalBtn && totalPrice){
+      bancontactBtn.style.display = 'none';
+      paypalBtn.style.display = 'none';
+      totalPrice.style.display = 'none';
+    }
+    const ownCart = document.querySelector('.cart')
+    if(ownCart){
+      const noItems = document.createElement('div');
+      noItems.innerText = 'No items found in your cart';
+      noItems.classList.add('cart__noItems')
+      ownCart.appendChild(noItems)
+    }
+  }     
 };
 
 
@@ -154,6 +167,10 @@ const createModalPay = async () =>{
   const { firstName, LastName, mobileNumber, addressLine } = await getProfile();
   const result =  await call(`${base_url}/cart`, 'GET');
   const myCart = result.cart.products;
+  const amountTotal = myCart.map(e=>e.quantity).reduce(function (a, b) {
+    return a+b;
+  }, 0);
+  console.log(amountTotal)
   const $namePayer = document.querySelector('.js-payNAme');
   const $numberPayer = document.querySelector('.js-payerNumber');
   const $addressPayer = document.querySelector('.js-payerAdderss');
@@ -183,7 +200,7 @@ const createModalPay = async () =>{
     window.location.replace('http://127.0.0.1:5500/src/client/signUp_In.html?res=personal');
     return;
   }
-  $orderAmount.innerText= myCart.length;
+  $orderAmount.innerText= amountTotal;
   $orderPrice.innerText= `€ ${res}`;
   $closePayModal.addEventListener('click', ()=>{
     $payModal.style.display = 'none'

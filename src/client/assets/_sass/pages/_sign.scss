@@ -99,3 +99,36 @@
 
 
 }
+.orders{
+  &__noItems{
+    text-align: center;
+    color: #ff8c00;
+    font-size: 1.25rem;
+  }
+  margin: 4rem 0;
+  &__titleO{
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 1.5rem;
+  }
+  &__top{
+    border-bottom: 1px solid #ff8c00;
+    &__headers{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  }
+  &__list{
+    padding: 0;
+    display:flex;
+    flex-direction: column;
+    &__item{
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+}
