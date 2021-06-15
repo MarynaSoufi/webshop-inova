@@ -33,11 +33,12 @@ export const getProductsWithPromo = async (product, request, response) => {
  * @param {*} request 
  * @param {*} response 
  */
-export const getOneProduct = async (product, request, response) => {
+export const getOneProduct = async (database, request, response) => {
   try {
     const id = request.params.id;
     console.log(id);
-    response.status(200).json({ products: await product.getProduct(id) });
+    const product = await database.product.getProduct(id);
+    response.status(200).json({ products: product });
   } catch({ message }) {
     response.status(500);
     response.json({ error: message });

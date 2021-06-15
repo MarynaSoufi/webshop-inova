@@ -1,9 +1,10 @@
 import ProductsDb from "../../lib/ProductsDb.js";
+import OrderDb from "../../lib/OrderDb.js";
 import * as productsController from './crudProducts.js'
 
 export default (app) => {
   
-  const productData = new ProductsDb();
+  const database = { order: new OrderDb(), product: new ProductsDb() };
  /**
  * @swagger
  * /products:
@@ -11,7 +12,7 @@ export default (app) => {
  *     summary: Get all products
  *     description: Retrieve a list of products. Can be used to populate a list of categories when prototyping or testing an API.
 */
-  app.get('/products', async (req, res) => await productsController.getProducts(productData, req, res));
+  app.get('/products', async (req, res) => await productsController.getProducts(database.product, req, res));
   /**
  * @swagger
  * /products/promo:
@@ -20,8 +21,8 @@ export default (app) => {
  *     description: Retrieve a list of products with promo. Can be used to populate a list of products with promo when prototyping or testing an API.
 */
   // get the todos
-  app.get('/products', async (req, res) => await productsController.getProducts(productData, req, res));
-  app.get('/products/promo', async (req, res) => await productsController.getProductsWithPromo(productData,req, res));
+  app.get('/products', async (req, res) => await productsController.getProducts(database.product, req, res));
+  app.get('/products/promo', async (req, res) => await productsController.getProductsWithPromo(database.product, req, res));
 
   /**
  * @swagger
@@ -30,7 +31,7 @@ export default (app) => {
  *     summary: Get products based on given id
  *     description: Retrieve aproduct. 
 */
-  app.get('/products/:id', async (req, res) => await productsController.getOneProduct(productData,req, res));
+  app.get('/products/:id', async (req, res) => await productsController.getOneProduct(database, req, res));
 
   /**
  * @swagger
@@ -39,6 +40,6 @@ export default (app) => {
  *     summary: Search products
  *     description: Retrieve a list of products. Can be used to populate a list of products when prototyping or testing an API.
 */
-  app.get('/search', async (req, res) => await productsController.searchProducts(productData,req, res));
-  
+  app.get('/search', async (req, res) => await productsController.searchProducts(database.product, req, res));
+
 }

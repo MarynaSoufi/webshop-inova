@@ -4,10 +4,14 @@ import { getOwnCart } from './apiCart.js';
 import { call } from './consts.js';
 const $detail = document.querySelector('.detail__info');
 
+
+
 /**
  * if user clicked on a specific product, here we fetch this product's data details
  */
   export const fetchItemDetail = async() => {
+    
+
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const product = urlParams.get('productId')
@@ -33,7 +37,6 @@ const createProductDetail = async(result) => {
   const listCart = await getOwnCart();
   const cartItems = listCart.map(i => i.product_id);
 
-  
   let str= ``;
     if ($detail){
       const tag = result.tags;
@@ -73,17 +76,21 @@ const createProductDetail = async(result) => {
             
             <ul class='detail__info__reviews__list'>${reviewItem}</ul>
           </div>
-          
-         
-          
-          
-
-
-          
-          
-          
         `;
       $detail.innerHTML = str;
+      
+      
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const product = urlParams.get('productId');
+      const $reviewerSection = document.querySelector('.js-reviewer');
+      const permissions = await call(`${base_url}/users/products/${product}/permissions`, 'GET');      
+      if(permissions && permissions.reviewable){
+        if($reviewerSection){
+          $reviewerSection.style.display ='block';
+        } 
+      } 
+
       const addwishBtn = document.querySelector('.addWish');
       if(addwishBtn){
         addwishBtn.addEventListener('click', async(e) =>{
@@ -150,6 +157,7 @@ const createProductDetail = async(result) => {
         });
       }
       
+
   
     }
 };
@@ -173,3 +181,8 @@ const sendReview = async(review, product) => {
   const body = JSON.stringify(review);
   return await call(`${base_url}/reviews/product/${product}`, 'POST', body);
 };
+
+// const checkAllowReview = async ()=>{
+ 
+//   console.log(orders);
+// }

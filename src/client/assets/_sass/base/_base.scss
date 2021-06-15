@@ -5,3 +5,33 @@ body{
   position: relative;
   min-height:86.7vh;
 }
+.warning, .cookies{
+  display:none;
+  z-index: 10000000;
+  position: fixed;
+  background-color: #000;
+  opacity: .9;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  width:90%;
+  height: auto;
+  padding: 4rem 2rem;
+  border: 2px solid #ff8c00;
+  &__img{
+    display:flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  p{
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+  &__author{
+    text-align: center;
+    font-size: 1.25rem !important;
+    line-height: 1 !important;
+    color: #ff8c00;
+  }
+}

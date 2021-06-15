@@ -2,6 +2,10 @@
   &--detail{
     width:50.75rem;
   }
+  &--warning{
+    width:7rem;
+    height: 7rem;
+  }
   &--icon{
     width:1.5rem;
     @media (max-width: 767px){

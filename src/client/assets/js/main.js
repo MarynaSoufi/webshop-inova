@@ -5,8 +5,9 @@ import {getProfile} from './apiPersonal.js';
 import{getWishList} from './apiWishlist.js';
 import{fetchCats} from './apiCategories.js';
 import {fetchItems} from './apiProducts.js';
-import { fetchItemDetail } from './apiDetail.js'
-import { getOwnCart } from './apiCart.js'
+import { fetchItemDetail } from './apiDetail.js';
+import { getOwnCart } from './apiCart.js';
+import { getOwnorders } from './apiOrders.js';
 
 // <-- IMPORTS END
 
@@ -31,7 +32,9 @@ const app = {
     }
     if(this.isAuthenticated()){
       getOwnCart();
+      getOwnorders();
     }
+    
   },
 
   /**
@@ -57,6 +60,9 @@ const app = {
     this.$signUpEmail = document.querySelector('.email-signUp');
     this.$signUppass = document.querySelector('.pass-signUp');
     this.$signSection = document.querySelector('.sign');
+    this.$warning = document.querySelector('.warning');
+    this.$cookies = document.querySelector('.cookies');
+    this.$acceptCookies = document.querySelector('.js-accept')
   },
 
   /**
@@ -64,6 +70,35 @@ const app = {
    */
 
   registerListeners(){
+    //warning
+    document.addEventListener('DOMContentLoaded',()=>{
+      if (!this.$cookies) {
+        return;
+      }
+      const hasReadCookiesInfo = window.localStorage.getItem('hasReadCookiesInfo');
+      if (!hasReadCookiesInfo) {
+        setTimeout(() => { this.$cookies.style.display='block'; }, 6000);
+      } else {
+        this.$cookies.style.display='none';
+      }
+
+      const hasVisitedSite = window.localStorage.getItem('hasVisitedSite');
+      if(!hasVisitedSite) {
+        this.$warning.style.display='block';
+        setTimeout(()=>{
+          window.localStorage.setItem('hasVisitedSite', 'true');
+          this.$warning.style.display='none';
+          },5000);
+      }
+    })
+
+    if (this.$acceptCookies) {
+      this.$acceptCookies.addEventListener('click',()=>{
+        window.localStorage.setItem('hasReadCookiesInfo', 'true');
+        this.$cookies.style.display='none';
+      });
+    }
+
     // close and open modal account
 
     this.$openAc.forEach((e)=>{
@@ -213,33 +248,6 @@ async logOut(){
     window.localStorage.removeItem('token');
     window.location.href = "http://127.0.0.1:5500/src/client/signUp_In.html";
   },
-
-// async getCart() {
-//   return await call(`${base_url}/cart`, 'GET');
-// },
-
-
-// async addToCart(productId) {
-//   const body = { productId: productId};
-//   return await call(`${base_url}/cart/products`, 'POST', body);
-// },
-
-// async call (url, method, body){
-//   const token = window.localStorage.getItem('token');
-//   const options = { method: method, headers: { 'Authorization': `Bearer ${token}`,'Content-Type': 'application/json'}};
-  
-//   if(body) {
-//     options.body = body;
-//   }
-//   const data =await fetch(url, options);
-//   const json =await data.json();
-//   if(json.name === 'TokenExpiredError'){
-//     await this.logOut();
-//     alert('Session expired, please login');
-//   }
-
-//   return json;
-// },
 
 }
 // start the app

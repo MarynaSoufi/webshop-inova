@@ -23,6 +23,7 @@ const createWishList = (list)=>{
   const $signSection = document.querySelector('.sign');
   const $personal = document.querySelector('.personal');
   const $wishlist = document.querySelector('.wishlist');
+  const $wishTitle = document.querySelector('.titleW');
   if(res && res == 'favorites'){
     $signSection.style.display ='none';
     $personal.style.display = 'none';
@@ -42,6 +43,7 @@ const createWishList = (list)=>{
         `;
       });
       $wishlistItems.innerHTML = str;
+      $wishTitle.innerText = 'My wish list'
     }
   }
     else if(res && res!='favorites'){
