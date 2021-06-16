@@ -24,12 +24,14 @@ export const getOwnorders = async()=>{
   }
 };
 const createordersList = (orders) => {
-  if(res && res=='orders'){
-    $signSection.style.display ='none';
-    $wishlist.style.display ='none';
-    $personal.style.display ='none';
-    $ordersTitle.innerText = 'My Orders';
+  if(!res || res !== 'orders') {
+    $orders.style.display = 'none';
+    return;
   }
+  $signSection.style.display ='none';
+  $wishlist.style.display ='none';
+  $personal.style.display ='none';
+  $ordersTitle.innerText = 'My Orders';
   let str = '';
   orders.forEach((e)=>{
     const prices = e.products.map(e=>e.quantity * e.price).reduce(function (a, b) {

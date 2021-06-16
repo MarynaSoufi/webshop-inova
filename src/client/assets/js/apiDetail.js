@@ -31,11 +31,22 @@ const $detail = document.querySelector('.detail__info');
  */
 
 const createProductDetail = async(result) => {
-  const list = await getWishList();
-  const ids = list.map(i => i.product_id);
-
-  const listCart = await getOwnCart();
-  const cartItems = listCart.map(i => i.product_id);
+  let ids = [];
+  let cartItems = [];
+  const isAuthenticated = !!window.localStorage.getItem('token');
+  if(isAuthenticated){
+    const list = await getWishList();
+    ids = list.map(i => i.product_id);
+    const listCart = await getOwnCart();
+    cartItems = listCart.map(i => i.product_id);
+  }  
+ 
+  // const list = await getWishList();
+  // const ids = list.map(i => i.product_id);
+  // const list = await getWishList();
+  // const ids = list.map(i => i.product_id);
+  // const listCart = await getOwnCart();
+  // const cartItems = listCart.map(i => i.product_id);
 
   let str= ``;
     if ($detail){
@@ -64,7 +75,7 @@ const createProductDetail = async(result) => {
             <div class='detail__info__desc__priceWrapper'>
               <p class='detail__info__desc__price'>€${" " + result.price}</p>
               <div class='detail__info__desc__btn'>
-                <button type="button" class=' btn btn--md ${!cartItems.includes(result.product_id) ? 'addToCart' : `${cartItems.includes(result.product_id) ? ' removeFromCart' : 'removeFromCart__hide'}`}'>${cartItems.includes(result.product_id) ? 'Remove from cart' : 'Add to cart'}</button>
+                <button type="button" class=' btn btn--md ${cartItems && !cartItems.includes(result.product_id) ? 'addToCart' : `${cartItems.includes(result.product_id) ? ' removeFromCart' : 'removeFromCart__hide'}`}'>${cartItems.includes(result.product_id) ? 'Remove from cart' : 'Add to cart'}</button>
               </div>
             </div>
           </div>
@@ -80,19 +91,24 @@ const createProductDetail = async(result) => {
       $detail.innerHTML = str;
       
       
-      const queryString = window.location.search;
-      const urlParams = new URLSearchParams(queryString);
-      const product = urlParams.get('productId');
-      const $reviewerSection = document.querySelector('.js-reviewer');
-      const permissions = await call(`${base_url}/users/products/${product}/permissions`, 'GET');      
-      if(permissions && permissions.reviewable){
-        if($reviewerSection){
-          $reviewerSection.style.display ='block';
-        } 
+      if(isAuthenticated) {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const product = urlParams.get('productId');
+        const $reviewerSection = document.querySelector('.js-reviewer');
+        const permissions = await call(`${base_url}/users/products/${product}/permissions`, 'GET');      
+        if(permissions && permissions.reviewable){
+          if($reviewerSection){
+            $reviewerSection.style.display ='block';
+          } 
+        }
       } 
 
       const addwishBtn = document.querySelector('.addWish');
       if(addwishBtn){
+        if(!isAuthenticated) {
+          addwishBtn.style.display = "none";
+        }
         addwishBtn.addEventListener('click', async(e) =>{
           e.preventDefault();
           const queryString = window.location.search;
@@ -106,6 +122,10 @@ const createProductDetail = async(result) => {
       }
       const delwishBtn = document.querySelector('.delWish');
       if(delwishBtn){
+        if(!isAuthenticated) {
+          delwishBtn.style.display = "none";
+        }
+
         delwishBtn.addEventListener('click', async(e) =>{
           e.preventDefault();
           const queryString = window.location.search;
@@ -119,6 +139,9 @@ const createProductDetail = async(result) => {
       
       const addToCart = document.querySelector('.addToCart');
       if(addToCart){
+        if(!isAuthenticated) {
+          addToCart.style.display = "none";
+        }
         addToCart.addEventListener('click', async(e) =>{
           e.preventDefault();
           const queryString = window.location.search;
@@ -132,6 +155,10 @@ const createProductDetail = async(result) => {
       }
       const removeFromCart = document.querySelector('.removeFromCart');
       if(removeFromCart){
+        if(!isAuthenticated) {
+          removeFromCart.style.display = "none";
+        }
+
         removeFromCart.addEventListener('click', async(e) =>{
           e.preventDefault();
           const queryString = window.location.search;
