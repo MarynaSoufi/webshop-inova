@@ -6,12 +6,14 @@ import express from 'express';
 
  
 const reviewData = new ReviewsDb();
-// app.get('/', async (req, res) => await usersController.getUsers(usersData, req, res));
+/**
+ * @swagger
+ * /reviews/product/:productId:
+ *   post:
+ *     summary: set review based on product id
+ *     description: set review based on product id. 
+*/
 app.post('/product/:productId', async (req, res) => await reviewsController.addRev(reviewData,req, res));
-// app.delete('/', async (req, res) => await usersController.deleteUser (usersData, req, res));
-// app.put('/', async (req, res) => await usersController.updateUser (usersData, req, res));
-// app.put('/email', async (req, res) => await usersController.updateEmail (usersData, req, res));
-// app.put('/password', async (req, res) => await usersController.updatePassword (usersData, req, res));
-// app.get('/profile', async (req, res) => await usersController.getOwnProfile(usersData, req, res));
-// app.put('/profile', async (req, res) => await usersController.updateUsersProfile(usersData, req, res));
+
+
 export default app;

@@ -4,6 +4,7 @@
 
  import parseUsers from './parseUsers.js';
  import parseProfile from './parseProfile.js';
+ import orderStatuses from '../orders/orderStatuses.js'
 
  /**
   * Getting the users
@@ -20,7 +21,12 @@
      response.json({ error: message });
    }
  };
-
+/**
+ * get owm profile
+ * @param {*} user 
+ * @param {*} request 
+ * @param {*} response 
+ */
  export const getOwnProfile = async (user, request, response) => {
   try {
   const id = request.userId;
@@ -50,7 +56,12 @@
    }
  };
 
- 
+ /**
+  * delete user
+  * @param {*} user 
+  * @param {*} request 
+  * @param {*} response 
+  */
 
  export const deleteUser = async (user, request, response) => {
   try {
@@ -81,7 +92,12 @@
     response.status(500).json({ error: message });
   }
 };
-
+/**
+ * updste email
+ * @param {*} user 
+ * @param {*} request 
+ * @param {*} response 
+ */
 export const updateEmail = async (user, request, response) => {
   try {
    const { email } = request.body;
@@ -98,6 +114,12 @@ export const updateEmail = async (user, request, response) => {
     response.status(500).json({ error: message });
   }
 };
+/**
+ * update password
+ * @param {*} user 
+ * @param {*} request 
+ * @param {*} response 
+ */
 
 export const updatePassword = async (user, request, response) => {
   try {
@@ -131,6 +153,28 @@ export const updatePassword = async (user, request, response) => {
    const id = request.userId;
    const updatedUsersProfle = await profile.updateProfile(id, firstName, lastName, mobileNumber, addressLine);
    response.status(200).json({ profile: updatedUsersProfle });
+  }
+  catch({ message }) {
+    response.status(500).json({ error: message });
+  }
+};
+
+/**
+  * Get user's permissions by product
+  *
+  * @param {*} order
+  * @param {*} request
+  * @param {*} response
+  */
+ export const getPermissionsByProduct = async (order, request, response) => {
+  try {
+   const userId = request.userId;
+   const productId = +request.params.id;
+   //check whether user can review this product_id
+   const userOrders = await order.getAllOrders(userId);
+   const reviewable = !!userOrders.find(uo => uo.status == orderStatuses.delivered 
+    && uo.products.some(p => p.product_id === productId));
+   response.status(200).json({ reviewable });
   }
   catch({ message }) {
     response.status(500).json({ error: message });

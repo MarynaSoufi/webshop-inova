@@ -1,0 +1,81 @@
+.contact{
+
+  &__title{
+    margin: 4rem auto;
+    text-align: center !important;
+    strong{
+      font-size: 1.5rem;
+      color:#ff8c00;
+    }
+  }
+  &__wrapper{
+    display:flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+    width: 100%;
+    &__info{
+      width:25%;
+      div{
+        margin-bottom: 4rem;
+        strong{
+          margin-bottom: 2rem;
+          font-size: 1.25rem;
+        }
+        p{
+          line-height: 1.7;
+        }
+      }
+    }
+    &__forum{
+      width:50%;
+      height:auto;
+      form{
+        display:flex;
+        flex-direction: column;
+        div{
+          div{
+            label{
+              margin-bottom: .5rem;
+            }
+            input, textarea{
+              background-color:transparent;
+              border: 1px solid #ff8c00;
+              padding: .5rem;
+              width: 100%;
+              outline: none;
+            }
+            input{
+              height: 68px;
+              color: #fff;
+            }
+            textarea{
+              height: 136px;
+              color: #fff;
+              
+            }
+          }
+          
+          margin-bottom: 1rem;
+        }
+      }
+
+    }
+    @media (max-width: 767px){
+      &__info{
+        width: 80%;
+      }
+      &__forum{
+        width: 100%;
+      }
+    }
+    @media (min-width: 768px) and (max-width: 1024px){
+      &__info{
+        width: 40%;
+      }
+      &__forum{
+        width: 55%;
+      }
+    }
+  }
+}

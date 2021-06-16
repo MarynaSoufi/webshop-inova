@@ -4,11 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/server/index.js",
+    "dev": "cross-env NODE_ENV=development nodemon src/server/index.js",
+    "test": "cross-env NODE_ENV=test jest --coverage",
     "sass": "sass --style=compressed src/client/assets/_sass/main.scss src/client/assets/css/main.css",
     "watch:sass": "npm run sass -- --watch",
     "seed": "node src/server/seeder/index.js",
     "start": "npm-run-all sass --parallel watch:*"
+  },
+  "jest": {
+    "transform": {
+      "\\.[jt]sx?$": "babel-jest"
+    }
   },
   "repository": {
     "type": "git",
@@ -25,6 +31,7 @@
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "cross": "^1.0.0",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
     "faker": "^5.5.3",
@@ -35,9 +42,16 @@
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
-    "sqlite3": "^5.0.2"
+    "sqlite3": "^5.0.2",
+    "supertest": "^6.1.3",
+    "swagger-jsdoc": "6.1.0",
+    "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.14.4",
+    "babel-jest": "^27.0.2",
+    "cross-env": "^7.0.3",
+    "jest": "^27.0.4",
     "nodemon": "^2.0.7"
   }
 }

@@ -1,0 +1,134 @@
+.sign{
+  &__title{
+    margin: 4rem 0;
+    font-size: 1.5rem;
+  }
+  @media (max-width: 768px){
+    &__title{
+      font-size: 1rem;
+    }
+  }
+  &__wrapper{
+   
+    display:flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+    &__form{
+      width:48%;
+      &__title{
+        margin-bottom: 2rem;
+        font-size: 1.25rem;
+        text-align: center;
+      }
+      form{
+        
+        padding: 2rem;
+        border: 1px solid #ff8c00;
+        label{
+          font-size: 1.25rem;
+        }
+        input{
+          margin-top: 1rem;
+          margin-bottom: 2rem;
+          width: 100%;
+          height:68px;
+          padding: .5rem;
+          color: #fff;
+          background-color:transparent;
+          outline: none;
+          border: 1px solid #ff8c00;
+        }
+        
+      }
+      @media(max-width: 768px){
+        width: 100%;
+        .log-form{ 
+          margin-bottom: 4rem;
+        }
+      }
+    }
+    
+  }
+}
+
+.personal{
+  &__title{
+    margin: 4rem 0;
+    font-size: 1.5rem;
+  }
+  @media (max-width: 768px){
+    &__title{
+      font-size: 1rem;
+    }
+  }
+
+  &__form{
+    display:flex;
+    justify-content: center;
+    align-items: start;
+    margin-bottom: 4rem;
+    
+    width: 100%;
+    &__wrapper{
+      width: 85%;
+      &__item{
+        label{
+          font-size: 1.25rem;
+        }
+        input{
+          margin-top: 1rem;
+          margin-bottom: 2rem;
+          width: 99%;
+          height:68px;
+          padding: .5rem 1rem;
+          color: #fff;
+          background-color:transparent;
+          outline: none;
+          border: 1px solid #ff8c00;
+          
+        }
+        
+      }
+      
+    }
+   
+    
+  }
+
+
+}
+.orders{
+  &__noItems{
+    text-align: center;
+    color: #ff8c00;
+    font-size: 1.25rem;
+  }
+  margin: 4rem 0;
+  &__titleO{
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 1.5rem;
+  }
+  &__top{
+    border-bottom: 1px solid #ff8c00;
+    &__headers{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  }
+  &__list{
+    padding: 0;
+    display:flex;
+    flex-direction: column;
+    &__item{
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+}

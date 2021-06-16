@@ -2,3 +2,57 @@
   width:100%;
   height: 50vh;
 }
+.about{
+  &__title{
+    margin: 4rem auto;
+    text-align: center !important;
+    strong{
+      font-size: 1.5rem;
+      color:#ff8c00;
+    }
+  }
+  &__info{
+    &__what{
+      flex-direction: row-reverse;
+    }
+    &__who, &__what, &__extra{
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 4rem;
+      &__text{
+        width:49%;
+        strong{
+          margin-bottom: 1.3rem;
+          font-size: 1.25rem;
+          font-weight: 700;
+        }
+        p{
+          line-height: 1.5;
+          font-size: .9rem;
+        }
+      }
+      &__img{
+        width:49%;
+        border:2px solid #ff8c00;
+        img{
+          width:100%;
+        }
+      }
+    }
+    @media (max-width: 768px){
+      &__what{
+        flex-direction: row;
+      }
+      &__who, &__what, &__extra{
+        &__text, &__img{
+          width:100%;
+        }
+        &__img{
+          margin-bottom: 2rem;
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import PromoDb from "../../lib/PromoDb.js";
-import * as promoController from './crudPromo.js'
+import * as promoController from './crudPromo.js';
+
 
 export default (app) => {
   // create a ToDo file to work with

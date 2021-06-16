@@ -1,6 +1,6 @@
 
 /**
- * get all songs without authenticate
+ * get all products without authenticate
  * @param {*} req 
  * @param {*} res 
  */
@@ -13,6 +13,12 @@
   }
 };
 
+/**
+ * get products with promo
+ * @param {*} product 
+ * @param {*} request 
+ * @param {*} response 
+ */
 export const getProductsWithPromo = async (product, request, response) => {
   try {
     response.status(200).json({ products: await product.getAllProductsWithPromo() });
@@ -21,30 +27,29 @@ export const getProductsWithPromo = async (product, request, response) => {
     response.json({ error: message });
   }
 };
-
-export const getOneProduct = async (product, request, response) => {
+/**
+ * get one prodyct
+ * @param {*} product 
+ * @param {*} request 
+ * @param {*} response 
+ */
+export const getOneProduct = async (database, request, response) => {
   try {
     const id = request.params.id;
     console.log(id);
-    response.status(200).json({ products: await product.getProduct(id) });
+    const product = await database.product.getProduct(id);
+    response.status(200).json({ products: product });
   } catch({ message }) {
     response.status(500);
     response.json({ error: message });
   }
 };
-
-export const addProduct = async (product, request, response) => {
-  try {
-    const { description } = parseProduct (request, response);
-    const newProduct = await product.add(description);
-    response.status(201).json({ product: newProduct });
-  } catch({ message }) {
-    response.status(500).json({ error: message });
-  }
-};
-
-
-
+/**
+ * get products by categoryId and tagIds
+ * @param {*} product 
+ * @param {*} request 
+ * @param {*} response 
+ */
 export const searchProducts = async (product, request, response) => {
   try {
     const searchQuery = {
@@ -57,3 +62,5 @@ export const searchProducts = async (product, request, response) => {
     response.json({ error: message });
   }
 };
+
+

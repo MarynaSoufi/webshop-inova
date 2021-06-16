@@ -9,7 +9,7 @@ dotenv.config();
 
  export default class UsersDb {
    /**
-    * Adds a todo to our database
+    * Adds a user to our database
     * @param {string} email
     * @param {string} password
     */
@@ -18,7 +18,9 @@ dotenv.config();
      try {
        const userAddedResult = await knexWebShop('Users').insert({ email: email, password: bcrypt.hashSync(password, 10)});
        await knexWebShop('Profiles').insert({ user_id: userAddedResult[0]});
-       await knexWebShop('Cart').insert({ user_id: userAddedResult[0]}); 
+       await knexWebShop('Cart').insert({ user_id: userAddedResult[0]});
+       await knexWebShop('WishList').insert({ user_id: userAddedResult[0]});
+
        return userAddedResult;
      } catch (e) {
        return console.error(e.message);
@@ -66,6 +68,7 @@ dotenv.config();
        const userDeleted = await knexWebShop('Users').where('user_id', parseInt(id)).del();
        await knexWebShop('Profiles').where('user_id', parseInt(id)).del();
        await knexWebShop('Cart').where('user_id', parseInt(id)).del();
+       await knexWebShop('WishList').where('user_id', parseInt(id)).del();
        return userDeleted;
      } catch (e) {
        return console.error(e.message);
@@ -99,17 +102,6 @@ dotenv.config();
       console.error(err.message);
     }
    }
-
-   /**
-    * add profile to user
-   */
-    // async addProfile(id, firstName = null, lastName = null, mobileNumber= null, addressLine = null) {
-    //   try {
-    //     return await knexWebShop('Profiles').insert({ id: id, firstName: firstName, lastName: lastName, mobileNumber: mobile, addressLine: addressLine});
-    //   } catch (e) {
-    //     return console.error(e.message);
-    //   }
-    // }
 
     /**
     * Updates an existing user's profile

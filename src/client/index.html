@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>INOVA | Home</title>
   <link rel="stylesheet" href="assets/css/main.css">
+
 </head>
 <body>
   
@@ -20,17 +21,41 @@
       </div>
       <div class="mainNav">
         <div class="container">
+          
           <div class="mainNav__wrapper">
+            
             <div class='mainNav__logo'>
-              <a href="/src/client/index.html"><img class='image image--logo' src="./assets/images/inovashop-logo-light-lato.svg" alt="Logo"/></a>
+              <a href="/src/client/index.html"><img class='image image--logoLight' src="./assets/images/inovashop-logo-light-lato.svg" alt="Logo"/></a>
+              <a href="/src/client/index.html"><img class='image image--logoDark' src="./assets/images/logo-dark.svg" alt="Logo"/></a>
             </div>
             <div class="mainNav__wrapper__links">
-              <a><img class='image image--icon'src="./assets/images/account.svg" alt='icon account' />Account</a>
-              <a href="/src/client/cart.html"><img class='image image--icon'src="./assets/images/cart.svg" alt='icon account' />Cart</a>
+              <div class = 'mainNav__wrapper__links__light ac'><img class='image image--icon'src="./assets/images/account.svg" alt='icon account' /><span>Account</span></div>
+              <a class = 'mainNav__wrapper__links__light' href="/src/client/cart.html"><img class='image image--icon'src="./assets/images/cart.svg" alt='icon account' /><span>Cart</span></a>
+              <div  class = 'mainNav__wrapper__links__dark ac'><img class='image image--icon ac'src="./assets/images/accountDark.svg" alt='icon account' /><span>Account</span></div>
+              <a class = 'mainNav__wrapper__links__dark' href="/src/client/cart.html"><img class='image image--icon'src="./assets/images/cartDark.svg" alt='icon account' /><span>Cart</span></a>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="account__modal">
+        <div class="account__modal__top">
+          <strong class='log'>My Account</strong>
+          <span class='account__modal__top__close'>X</span>
+        </div>
+        
+        <div class="account__modal__wrapper">
+          <a href="/src/client/signUp_In.html" class='unlog' >SignUp/Register</a>
+          <!-- <a href="/src/client/signUp_In.html?res=email" class='log' >Email Address</a>  -->
+          <a class='log personalBtn' href="/src/client/signUp_In.html?res=personal">Personal Details</a> 
+          <!-- <a class='log' href="/src/client/signUp_In.html?res=password">Password</a>  -->
+          <a class='log' href="/src/client/signUp_In.html?res=orders">Order History</a> 
+          <a class='log wishListBtn' href="/src/client/signUp_In.html?res=favorites">Wish List</a> 
+          <span class='log logOut'>Logout</span>  
+          <a class='log js-delete' href="/src/client/signUp_In.html?res=out">Delete Account</a> 
+        </div>
+      </div>
+
       <div class="subNav">
         <div class = 'container'>
           <div class="subNav__list">
@@ -40,17 +65,57 @@
       </div>
     </header>
     <main>
+      <div class="container warning">
+        <figure class="warning__img">
+          <img src="./assets/images/warning.svg" alt="" class="image image--warning">
+        </figure>
+        <p>This online store is a fictitious assignment 
+            commissioned by an associate degree
+            computer programming at the 
+            Artevelde University of Applied Sciences
+        </p>
+       <p class="warning__author">Designed & Developed by<br><br>Aiden Soufi & Maryna Soufi</p>
+    </div>
+    <div class="container cookies">
+        <figure class="cookies__img">
+          <img src="./assets/images/cookie.svg" alt="" class="image image--warning">
+        </figure>
+        <p>Inova uses cookies to ensure you 
+          get the best experience on our web-shop
+        </p>
+        <button type="button" class="btn btn--big js-accept">I understand</button>
+    </div>
       <div class="hero">
           <video autoplay muted loop id="myVideo">
               <source src="./assets/images/herovid.mp4" type="video/mp4">
           </video>
       </div>
-      <section class="items">
+      <section class="items container">
         <div class="promo">
           <strong>PROMO</strong>
-        </div>
-        <ul class="items_list container">
           
+        </div>
+        <div class='cat'></div>
+        <ul class="items_list ">
+        </ul>
+        
+      </section>
+      <section class = 'insta'>
+        <div class="inst">
+          <strong>GO INSTA, GET INSPIRED!</strong>
+        </div>
+        <ul class="insta__pics">
+          <li class='pic'><img src="./assets/images/insta1.jpg" alt="woman muscles"></li>
+          <li class='pic'><img src="./assets/images/insta3.jpg" alt="woman muscles"></li>
+          <li class = 'hide pic'><img src="./assets/images/insta2.jpg" alt="woman muscles"></li>
+          <li class='pic'><img src="./assets/images/insta4.jpg" alt="woman muscles"></li>
+          <li class = 'hide pic'><img src="./assets/images/insta6.jpg" alt="woman muscles"></li>
+          
+          <li class = 'hide pic'><img src="./assets/images/insta7.jpg" alt="woman muscles"></li>
+          <li class='pic'><img src="./assets/images/insta5.jpg" alt="woman muscles"></li>
+          <li class = 'hide pic'><img src="./assets/images/insta8.jpg" alt="woman muscles"></li>
+          <li class = 'hide pic'><img src="./assets/images/insta9.jpg" alt="woman muscles"></li>
+          <li class = 'hide pic'><img src="./assets/images/insta10.jpg" alt="woman muscles"></li>
         </ul>
       </section>
     </main>
@@ -60,5 +125,6 @@
       </div>
     </footer>
   <script type="module" src="./assets/js/main.js"></script>
+  
 </body>
 </html>
